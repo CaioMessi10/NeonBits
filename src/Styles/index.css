@@ -1,0 +1,127 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-image: url(./fundonovo.png);
+  background-size: cover;
+  background: radial-gradient(ellipse at center, #4682B4, 	#ADD8E6 );
+}
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 20px;
+}
+header {
+  background: linear-gradient(ellipse at center, #4682B4,	#ADD8E6);
+  color: #fff;
+  padding: 10px;
+}
+.cabecalho{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.logo-head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.logo-head img {
+  width: 150px;
+  height: 150px;
+}
+.coluna {
+  flex-basis: 20%;
+  background: linear-gradient(45deg, #4682B4, #87CEEB);
+  color: rgb(225, 225, 225);
+  padding: 2px;
+  margin: 5px;
+  border-radius: 8px;
+}
+.coluna-central {
+  flex-basis: 60%;
+  background: linear-gradient(to right, #4682B4, #87CEEB);
+  color: rgb(225, 225, 225) ;
+  padding: 5px;
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: flex;
+  flex-wrap: wrap;
+  border-radius: 8px;
+}
+
+
+nav {
+  background-color: rgb(19, 19, 19);
+  text-align: center;
+  padding: 10px 0;
+  font-size: 25px;
+}
+nav a {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  margin: 0 20px;
+}
+nav a:hover {
+  text-decoration: underline;
+}
+footer {
+  background: linear-gradient(to right, #4682B4, #87CEEB);
+  color: #fff;
+  text-align: center;
+  padding: 10px;
+  position: flex;
+  bottom: 0;
+  width: 100%;
+ 
+}
+.Modal {
+  position:absolute;
+  display:central;
+  right: 37%;
+  top: 70px;
+  bottom: 70px;
+  background-image: url(./madera.jpg);
+  color: #fff;
+  border-radius: 20px;
+}
+
+.Overlay {
+  position: flex;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #272525;
+}
+
+.buton {
+  color: white;
+  background-color: black;
+  position: absolute;
+  top: 21em;
+  bottom: 33.8em;
+  left: 1.8em;
+}
+header .icon1{
+  font-size: 50px;
+  cursor: pointer;
+} 
+header .icon3{
+  font-size: 50px;
+  color: aliceblue;
+  display: flex;
+  justify-content: space-between;
+}
+.obrigado {
+  flex-basis: 20%;
+  background-color: #1d1c1c;
+  color: rgb(225, 225, 225);
+  padding: 2px;
+  margin: 5px;
+  border-radius: 8px;
+}
+
+
