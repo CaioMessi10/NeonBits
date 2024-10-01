@@ -4,7 +4,7 @@ import Foto2 from '../imgs/Assassins.png';
 import Foto3 from '../imgs/EldenRing.png';
 import Foto4 from '../imgs/Decorativo.png';
 import Foto5 from '../imgs/foneGamer.png';
-import Foto6 from '../imgs/SuperMario.png';
+import Foto6 from '../imgs/SuperMario.png'
 
 export default function Inicio() {
   return (
@@ -23,7 +23,7 @@ export default function Inicio() {
             <li>Assassin's Creed Valhalla, R$ 199,99</li>
           </ul>
           <div className="foto1">
-            <img src={Foto2} alt="Assassin's Creed" height={200} width='200' />
+            <img src={Foto2} alt="Assasins" height={200} width='200' />
           </div>
         </div>
 
@@ -55,7 +55,7 @@ export default function Inicio() {
               Inclui itens exclusivos e conteúdo adicional.
             </li>
           </ul>
-          <img src={Foto3} alt="Elden Ring" height={200} width='200' />
+          <img src={Foto3} alt="EldenRing" height={200} width='200' />
         </div>
 
         <div className="coluna">
@@ -66,9 +66,7 @@ export default function Inicio() {
             <li>Final Fantasy XVI, R$ 269,99</li>
             <li>Hogwarts Legacy, R$ 249,99</li>
           </ul>
-          <div className="foto1">
-            <img src={foto1} alt="Starfield" height={200} width='200' />
-          </div>
+          <img src={foto1} alt="Starfield" height={200} width='200' />
         </div>
 
         <div className="coluna">
@@ -78,10 +76,8 @@ export default function Inicio() {
             <li>Desconto de 20% em compras acima de R$ 300!</li>
             <li>Compre 1 jogo, leve 2 em jogos indie!</li>
             <li>Promoção de aniversariante: jogo grátis na compra de qualquer título!</li>
+            <img src={Foto4} alt="Jogos Clássicos" height={200} width='200' />
           </ul>
-          <div className="foto1">
-            <img src={Foto4} alt="Promoções" height={200} width='200' />
-          </div>
         </div>
 
         <div className="coluna">
@@ -91,10 +87,8 @@ export default function Inicio() {
             <li>Controle extra, R$ 299,99</li>
             <li>Fones de ouvido gamer, R$ 149,99</li>
             <li>Suporte para console, R$ 59,99</li>
+            <img src={Foto5} alt="foneGamer" height={200} width='200' />
           </ul>
-          <div className="foto1">
-            <img src={Foto5} alt="Fones Gamer" height={200} width='200' />
-          </div>
         </div>
 
         <div className="coluna">
@@ -104,10 +98,9 @@ export default function Inicio() {
             <li>Super Mario Bros., R$ 89,99</li>
             <li>The Legend of Zelda: Ocarina of Time, R$ 119,99</li>
             <li>Final Fantasy VII, R$ 129,99</li>
+            <img src={Foto6} alt="SuperMario" height={200} width='200' />
           </ul>
-          <div className="foto1">
-            <img src={Foto6} alt="Super Mario" height={200} width='200' />
-          </div>
+         
         </div>
       </div>
     </>

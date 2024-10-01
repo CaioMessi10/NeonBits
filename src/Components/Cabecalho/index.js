@@ -27,7 +27,7 @@ export default function Cabecalho() {
                     </div>
                 </div>
             </header>
-                                                 {/*Área de Login e Cadastro*/}
+            {/* Área de Login e Cadastro */}
             {isMenuVisible && (
                 <div className="menu">
                     <div className="login-form">
@@ -49,9 +49,11 @@ export default function Cabecalho() {
                     </div>
                 </div>
             )}
-            <section id="sobre-a-empresa">
-                <h2>Sobre a Empresa</h2>
-                <p>Criada pelo Caio Martins...</p>
+            <section id="sobre-a-empresa" style={{ marginTop: isMenuVisible ? '20px' : '0' }}>
+                <div className="sobre-container">
+                    <h2>Sobre a Empresa</h2>
+                    <p>Criada pelo Caio Martins...</p>
+                </div>
             </section>
         </div>
     );
