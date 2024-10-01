@@ -1,127 +1,220 @@
+/* Estilos Globais */
 body {
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
   background-image: url(./fundonovo.png);
   background-size: cover;
-  background: radial-gradient(ellipse at center, #4682B4, 	#ADD8E6 );
+  background: radial-gradient(ellipse at center, #4682B4, #ADD8E6);
+  color: #fff;
 }
+
+.icon3 a {
+  color: rgb(248, 248, 248);
+}
+
+/* Container Principal */
 .container {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   margin: 20px;
 }
+
+/* Estilos do Cabeçalho */
 header {
-  background: linear-gradient(ellipse at center, #4682B4,	#ADD8E6);
-  color: #fff;
+  background: linear-gradient(ellipse at center, #4682B4, #ADD8E6);
   padding: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
-.cabecalho{
+
+.cabecalho {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
 }
+
 .logo-head {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
 .logo-head img {
   width: 150px;
-  height: 150px;
+  height: auto;
 }
+
+/* Colunas */
 .coluna {
   flex-basis: 20%;
   background: linear-gradient(45deg, #4682B4, #87CEEB);
   color: rgb(225, 225, 225);
-  padding: 2px;
-  margin: 5px;
+  padding: 10px;
+  margin: 10px 0;
   border-radius: 8px;
+  transition: transform 0.3s;
 }
+
+.coluna:hover {
+  transform: scale(1.05);
+}
+
 .coluna-central {
   flex-basis: 60%;
   background: linear-gradient(to right, #4682B4, #87CEEB);
-  color: rgb(225, 225, 225) ;
-  padding: 5px;
+  padding: 10px;
   margin: 10px;
   display: flex;
-  justify-content: center;
-  align-items: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: flex-start;
   border-radius: 8px;
+  transition: transform 0.3s;
 }
 
+.coluna-central:hover {
+  transform: scale(1.05);
+}
 
+/* Navegação */
 nav {
   background-color: rgb(19, 19, 19);
   text-align: center;
   padding: 10px 0;
-  font-size: 25px;
+  font-size: 20px;
 }
+
 nav a {
-  color: rgb(255, 255, 255);
+  color: #fff;
   text-decoration: none;
-  margin: 0 20px;
+  margin: 0 15px;
+  transition: color 0.3s;
 }
+
 nav a:hover {
   text-decoration: underline;
+  color: #87CEEB;
 }
+
+/* Rodapé */
 footer {
   background: linear-gradient(to right, #4682B4, #87CEEB);
-  color: #fff;
   text-align: center;
   padding: 10px;
-  position: flex;
-  bottom: 0;
   width: 100%;
- 
-}
-.Modal {
-  position:absolute;
-  display:central;
-  right: 37%;
-  top: 70px;
-  bottom: 70px;
-  background-image: url(./madera.jpg);
-  color: #fff;
-  border-radius: 20px;
+  position: relative;
 }
 
-.Overlay {
-  position: flex;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #272525;
-}
-
+/* Botões */
 .buton {
   color: white;
   background-color: black;
-  position: absolute;
-  top: 21em;
-  bottom: 33.8em;
-  left: 1.8em;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
 }
-header .icon1{
+
+/* Ícones */
+header .icon1 {
   font-size: 50px;
   cursor: pointer;
-} 
-header .icon3{
+}
+
+header .icon3 {
   font-size: 50px;
   color: aliceblue;
   display: flex;
   justify-content: space-between;
 }
+
+/* Estilos de Agradecimento */
 .obrigado {
   flex-basis: 20%;
   background-color: #1d1c1c;
   color: rgb(225, 225, 225);
-  padding: 2px;
-  margin: 5px;
+  padding: 10px;
+  margin: 10px 0;
   border-radius: 8px;
 }
 
+/* Imagens */
+.foto1 {
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.foto1:hover {
+  transform: scale(1.1);
+}
+
+/* Menu */
+.menu {
+  background: linear-gradient(to right, #4682B4, #87CEEB);
+  padding: 20px;
+  border-radius: 8px;
+  position: absolute;
+  top: 60px;
+  right: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Formulários */
+form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+input {
+  margin: 5px 0;
+  padding: 8px;
+  border: none;
+  border-radius: 4px;
+}
+
+button {
+  padding: 10px;
+  background-color: #4682B4;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #4682B4;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .coluna,
+  .coluna-central {
+    flex-basis: 100%;
+  }
+}
+
+/* Menu Fixo */
+.menu {
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 30px;
+  border-radius: 8px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  width: 400px;
+}
+
+/* Estilos do Título Vintage */
+.titulo-vintage {
+  font-family: 'Press Start 2P', cursive; /* Fonte gamer */
+  font-weight: 800;
+  font-size: 2rem;
+  color: #70a6d1; /* Cor do texto */
+  text-shadow: 0 0 5px #000000, 0 0 10px #000000; /* Efeito de brilho */
+  text-align: center;
+  margin: 0;
+}
 
