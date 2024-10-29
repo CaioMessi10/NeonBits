@@ -1,0 +1,94 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model CadHierarquia {
+  id    String @id @default(uuid())
+  nome  String @unique
+  cadastroFuncionarios CadastroFuncionarios[]
+
+  @@map("cadastro_hierarquia")
+}
+
+model CadastroUsuarios {
+  id     String @id @default(uuid())
+  nome   String
+  cpf    String @unique
+  email  String
+  senha  String
+  cep    String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  pedidos  CadPedidos []
+  idPedidos String?
+
+  @@map("cadastro_usuarios")
+}
+
+model CadastroFuncionarios {
+  id      String @id @default(uuid())
+  nome    String
+  cpf     String @unique
+  email   String
+  senha   String
+  cep     String
+
+  hierarquia CadHierarquia @relation(fields: [idHierarquia], references: [id])
+  idHierarquia String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("cadastro_funcionarios")
+}
+
+model CadastroProdutos {
+  id        String   @id @default(uuid())
+  nomeProd  String
+  categoria String
+  categoria_estoque String
+  precoProd String
+  created   DateTime @default(now())
+  updated   DateTime @updatedAt
+
+  estoque         CadEstoque[]
+  idEstoque String
+  pedidos CadPedidos[]
+  @@map("cadastro_produtos")
+}
+
+model CadEstoque {
+  id          String @id @default(uuid())
+  nomeProd    String
+
+  created DateTime @default(now())
+  updated DateTime @updatedAt
+
+  produtos     CadastroProdutos?     @relation(fields: [idProdutos], references: [id])
+  idProdutos String?
+
+
+  @@map("cadastro_estoque")
+}
+
+model CadPedidos {
+  id         String   @id @default(uuid())
+  preco      String
+  quantidade String
+  created    DateTime @default(now())
+  updated    DateTime @updatedAt
+
+  usuario   CadastroUsuarios @relation(fields: [idUsuario], references: [id])
+  idUsuario String
+  produto CadastroProdutos @relation(fields: [idProdutos], references: [id])
+  idProdutos String
+
+  @@map("cadastro_pedido")
+}

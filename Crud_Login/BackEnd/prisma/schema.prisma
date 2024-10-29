@@ -1,0 +1,33 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model CadastrarUSuarios {
+  id String @id @default(uuid())
+  nome String
+  email String
+  senha String
+
+  data_criacao DateTime @default(now())
+  data_alteracao DateTime @updatedAt
+
+  grupos CadastrarGrupos @relation(fields: [idGrupos], references: [id])
+  idGrupos String @default("6c1769ec-02e5-4c6a-9bc8-238f043115a2")
+
+  @@map("cadastro_usuarios")
+}
+
+model CadastrarGrupos{
+  id String @id @default(uuid())
+  nome String
+
+  data_criacao DateTime @default(now()) @db.Timestamptz()
+  data_alteracao DateTime @updatedAt @db.Timestamptz()
+
+  cadUsuarios CadastrarUSuarios[]
+}
