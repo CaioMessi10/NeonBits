@@ -1,11 +1,14 @@
-import './App.css';
+import React from 'react'
 
-function App() {
+import Rotas from './Routes'
+
+export default function App() {
   return (
-    <div className="App">
-      <h1>Crud Login</h1>
+    <div>
+      <Rotas />
     </div>
-  );
+      
+  )
 }
 
-export default App;
+
