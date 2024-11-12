@@ -1,58 +1,56 @@
-.conteinerInicioGeral {
+.conteinerInicioGeral{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
 
-    h1 {
-        background-color: #1d59a8;
+    h1{
+        background-color: #07e7f7;
         width: 100%;
         text-align: center;
         padding: 0.5rem;
-        color: #05bff7;
+        color: #05aaf7;
         font-weight: bold;
-        margin: 0; 
     }
 
-    form {
+    form{
         display: flex;
         flex-direction: column;
         width: 100%;
         align-items: center;
-
-        input {
+        
+        input{
             width: 70%;
             margin-top: 0.8rem;
             text-align: center;
             font-size: 1.5rem;
             height: 2rem;
             border-radius: 0.5rem;
-            border: 1px solid #ccc;   
-            transition: border-color 0.3s;
-
-            &:focus {
-                border-color: #05b2f7; 
-                outline: none; 
-            }
         }
-
-        button {
+        
+        button{
             margin-top: 0.8rem;
             height: 2rem;
             width: 50%;
-            background-color: #0a5a9b;
-            color: #fff;
+            background-color: #074ff7;
+            color: #ffffff;
             font-size: 1.5rem;
             font-weight: bold;
-            border: none; 
+            outline: none;
+            border-width: 0;
             border-radius: 0.5rem;
-            cursor: pointer;
-            transition: background-color 0.3s;
+        }
+    }
 
-            &:hover {
-                background-color: darken(#348de0, 10%); 
-            }
+    p{
+        font-weight: bold;
+        margin-top: 1rem;
+
+        a{
+            text-decoration: none;
+            font-weight: bold;
+            color: #05e7f7;
         }
     }
 }

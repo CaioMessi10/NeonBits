@@ -1,16 +1,18 @@
-import React from 'react'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import DashBoard from '../DashBoard'
+import DashBoard from "../DashBoard";
+import EditarUsuarios from "../EditarUsuarios";
 
 export default function Autenticado() {
-    return (
-        <BrowserRouter>
-            <Routes>
-                <Route path='/' element={< DashBoard />} />
-                
-                <Route path='*' element={< DashBoard />} />
-            </Routes>
-        </BrowserRouter>
-    )
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<DashBoard />} />
+        <Route path="/EditarUsuarios/:id" element={<EditarUsuarios />} />
+
+        <Route path="*" element={<DashBoard />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
