@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate} from "react-router-dom";
-import apiLocal from "../Api/apiLocal";
+import apiLocal from "./../Api/apiLocal";
 import "./estilos.editarUsuarios.scss";
 
 export default function EditarUsuarios() {

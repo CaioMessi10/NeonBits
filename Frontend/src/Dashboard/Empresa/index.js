@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
-import "./estilo.dashboard.scss";
 import { toast } from "react-toastify";
-import apiLocal from "./../Api/apiLocal";
+import apiLocal from "./../../Api/apiLocal";
 import { Link } from "react-router-dom";
 
 export default function DashBoard() {

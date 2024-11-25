@@ -51,6 +51,7 @@ class UsuariosServices {
         });
         return resposta;
     }
+
 }
 
 export { UsuariosServices };

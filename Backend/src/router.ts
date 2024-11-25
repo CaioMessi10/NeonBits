@@ -6,14 +6,18 @@ import { ProdutosControllers } from './Controllers/Produtos/ProdutosControllers'
 import { EstoqueControllers } from './Controllers/Estoque/EstoqueControllers';
 import { HierarquiaCntrollers } from './Controllers/Hierarquia/HierarquiaControllers';
 import { PedidoControllers } from './Controllers/Pedidos/PedidosControllers';
+import { LoginUsuariosControllers } from './Controllers/Login/LoginUsuariosControllers';
 
 const router = Router();
 
+// Usuarios
 router.post('/CadastroUsuarios', new UsuariosControllers().cadastro_usuarios);
 router.get('/ConsultarUsuarios', new UsuariosControllers().consultar_usuarios);
 
-// Funcionarios
+// Login
+router.post('/LoginUsuarios', new LoginUsuariosControllers().loginUsuarios)
 
+// Funcionarios
 router.post('/CadastroFuncionarios', new FuncionariosControllers().cadastro_funcionarios);
 router.get('/ConsultarFuncionarios', new FuncionariosControllers().consultar_funcionarios);
 
@@ -28,6 +32,5 @@ router.post('/CadastroPedido', new PedidoControllers().cadastro_pedido)
 
 //Hierarquia
 router.post('/CadastroHierarquia', new HierarquiaCntrollers().cadastro_hierarquia)
-
 
 export default router;

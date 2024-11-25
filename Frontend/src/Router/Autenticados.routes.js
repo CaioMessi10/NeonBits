@@ -8,7 +8,6 @@ import {BrowserRouter, Route, Routes} from 'react-router-dom'
             <Routes>
             <Route path='/' element={<DashboardEmpresa />} />
             
-            
             <Route path='*' element={<DashboardEmpresa />} />
             </Routes>
             </BrowserRouter>

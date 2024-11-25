@@ -7,6 +7,7 @@ import Foto5 from '../imgs/foneGamer.png';
 import Foto6 from '../imgs/SuperMario.png'
 
 export default function Inicio() {
+
   return (
     <>
       <div className="container">
