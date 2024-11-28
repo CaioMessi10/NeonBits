@@ -1,109 +1,97 @@
 import React from 'react';
 import foto1 from '../imgs/Starfield.png';
-import Foto2 from '../imgs/Assassins.png';
-import Foto3 from '../imgs/EldenRing.png';
+import Foto2 from '../imgs/Assassins.png';  
+import Foto3 from '../imgs/EldenRing.png'; 
 import Foto4 from '../imgs/Decorativo.png';
 import Foto5 from '../imgs/foneGamer.png';
-import Foto6 from '../imgs/SuperMario.png'
+import Foto6 from '../imgs/SuperMario.png';
+import Section from './Section';
 
 export default function Inicio() {
-
   return (
-    <>
-      <div className="container">
-        <div className="coluna">
-          <h2>Os Preferidos</h2>
-          <p>Confira os jogos mais pedidos na nossa loja:</p>
-          <ul>
-            <li>The Last of Us Part II, R$ 199,99</li>
-            <li>God of War, R$ 179,99</li>
-            <li>Red Dead Redemption 2, R$ 199,99</li>
-            <li>Marvel's Spider-Man, R$ 159,99</li>
-            <li>FIFA 23, R$ 249,99</li>
-            <li>Call of Duty: Modern Warfare II, R$ 229,99</li>
-            <li>Assassin's Creed Valhalla, R$ 199,99</li>
-          </ul>
-          <div className="foto1">
-            <img src={Foto2} alt="Assasins" height={200} width='200' />
-          </div>
-        </div>
+    <div className="container">
+      {/* Seção de Jogos Reciclados */}
+      <Section 
+        title="Jogos Reciclados"
+        description="Explore nossa seleção de jogos recondicionados com preços acessíveis e qualidade garantida. Perfeitos para quem busca diversão sustentável!"
+        items={[
+          { name: "The Last of Us Part II", price: "R$ 149,99" },
+          { name: "God of War", price: "R$ 129,99" },
+          { name: "Red Dead Redemption 2", price: "R$ 139,99" },
+          { name: "Marvel's Spider-Man", price: "R$ 119,99" },
+          { name: "FIFA 23", price: "R$ 179,99" },
+          { name: "Call of Duty: Modern Warfare II", price: "R$ 169,99" },
+          { name: "Assassin's Creed Valhalla", price: "R$ 159,99" },
+        ]}
+        imgSrc={Foto2}
+        imgAlt="Assassin's Creed"
+      />
 
-        <div className="coluna-central">
-          <h2>Em Promoção</h2>
-          <ul>
-            <li>
-              <h3>Elden Ring<br />
-                R$ 159,99<br />
-              </h3>
-              Um RPG de ação desenvolvido pela FromSoftware, aclamado pela crítica.
-            </li>
-            <li>
-              <h3>Combo de Jogos Indie<br />
-                R$ 79,99<br />
-              </h3>
-              Inclui Hollow Knight, Celeste e Stardew Valley.
-            </li>
-            <li>
-              <h3>Pacote de Expansões<br />
-                R$ 49,99<br />
-              </h3>
-              Expansões para vários jogos populares.
-            </li>
-            <li>
-              <h3>Assassin's Creed Valhalla - Edição Especial<br />
-                R$ 249,99<br />
-              </h3>
-              Inclui itens exclusivos e conteúdo adicional.
-            </li>
-          </ul>
-          <img src={Foto3} alt="EldenRing" height={200} width='200' />
-        </div>
+      {/* Seção de Jogos Reciclados em Promoção */}
+      <Section 
+        title="Jogos Reciclados em Promoção"
+        description="Aproveite nossos preços incríveis em jogos reciclados, prontos para novas aventuras!"
+        items={[
+          { name: "Elden Ring - Reciclado", price: "R$ 129,99" },
+          { name: "Combo de Jogos Indie Reciclados", price: "R$ 69,99" },
+          { name: "Pacote de Expansões Reciclado", price: "R$ 39,99" },
+          { name: "Assassin's Creed Valhalla - Edição Especial Reciclada", price: "R$ 229,99" },
+        ]}
+        imgSrc={Foto3}
+        imgAlt="EldenRing"
+      />
 
-        <div className="coluna">
-          <h2>Novidades</h2>
-          <p>Confira nossos novos lançamentos:</p>
-          <ul>
-            <li>Starfield, R$ 299,99</li>
-            <li>Final Fantasy XVI, R$ 269,99</li>
-            <li>Hogwarts Legacy, R$ 249,99</li>
-          </ul>
-          <img src={foto1} alt="Starfield" height={200} width='200' />
-        </div>
+      {/* Seção de Novidades em Estoque */}
+      <Section 
+        title="Novidades em Estoque"
+        description="Jogos novos com preços acessíveis e com compromisso ambiental. Confira nossos lançamentos!"
+        items={[
+          { name: "Starfield", price: "R$ 249,99" },
+          { name: "Final Fantasy XVI", price: "R$ 229,99" },
+          { name: "Hogwarts Legacy", price: "R$ 199,99" },
+        ]}
+        imgSrc={foto1}
+        imgAlt="Starfield"
+      />
 
-        <div className="coluna">
-          <h2>Promoções do Mês</h2>
-          <p>Aproveite as ofertas especiais:</p>
-          <ul>
-            <li>Desconto de 20% em compras acima de R$ 300!</li>
-            <li>Compre 1 jogo, leve 2 em jogos indie!</li>
-            <li>Promoção de aniversariante: jogo grátis na compra de qualquer título!</li>
-            <img src={Foto4} alt="Jogos Clássicos" height={200} width='200' />
-          </ul>
-        </div>
+      {/* Seção de Promoções Recicladas */}
+      <Section 
+        title="Promoções Recicladas"
+        description="Ofertas especiais para quem adora jogos com história e sustentabilidade:"
+        items={[
+          { name: "Desconto de 30% em compras de jogos recondicionados!" },
+          { name: "Compre 1 jogo reciclado, leve 2 em títulos indie!" },
+          { name: "Promoção de Aniversário: Jogo gratuito em compras acima de R$ 200!" },
+        ]}
+        imgSrc={Foto4}
+        imgAlt="Promoções"
+      />
 
-        <div className="coluna">
-          <h2>Acessórios e Consoles</h2>
-          <p>Melhore sua experiência de jogo:</p>
-          <ul>
-            <li>Controle extra, R$ 299,99</li>
-            <li>Fones de ouvido gamer, R$ 149,99</li>
-            <li>Suporte para console, R$ 59,99</li>
-            <img src={Foto5} alt="foneGamer" height={200} width='200' />
-          </ul>
-        </div>
+      {/* Seção de Acessórios Reciclados */}
+      <Section 
+        title="Acessórios Reciclados"
+        description="Melhore sua experiência com acessórios de segunda mão, mas em excelente estado:"
+        items={[
+          { name: "Controle extra", price: "R$ 249,99" },
+          { name: "Fones de ouvido gamer", price: "R$ 129,99" },
+          { name: "Suporte para console", price: "R$ 49,99" },
+        ]}
+        imgSrc={Foto5}
+        imgAlt="foneGamer"
+      />
 
-        <div className="coluna">
-          <h2>Jogos Clássicos</h2>
-          <p>Reviva os clássicos:</p>
-          <ul>
-            <li>Super Mario Bros., R$ 89,99</li>
-            <li>The Legend of Zelda: Ocarina of Time, R$ 119,99</li>
-            <li>Final Fantasy VII, R$ 129,99</li>
-            <img src={Foto6} alt="SuperMario" height={200} width='200' />
-          </ul>
-         
-        </div>
-      </div>
-    </>
+      {/* Seção de Jogos Clássicos Reciclados */}
+      <Section 
+        title="Jogos Clássicos Reciclados"
+        description="Reviva os clássicos com versões remasterizadas e recondicionadas:"
+        items={[
+          { name: "Super Mario Bros.", price: "R$ 79,99" },
+          { name: "The Legend of Zelda: Ocarina of Time", price: "R$ 109,99" },
+          { name: "Final Fantasy VII", price: "R$ 119,99" },
+        ]}
+        imgSrc={Foto6}
+        imgAlt="SuperMario"
+      />
+    </div>
   );
 }

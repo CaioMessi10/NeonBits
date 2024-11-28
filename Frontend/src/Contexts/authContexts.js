@@ -1,30 +1,52 @@
-import { createContext, useState } from 'react'
-import apiLocal from '../Api/apiLocal'
-import { toast } from 'react-toastify'
- 
-export const AutenticadoContextoo = createContext()
- 
-export default function AuthProvider({ children }) {
+import { createContext, useState } from "react";
+import apiLocal from "../Api/apiLocal";
+
  
  
+export const AutenticadoContexto =  createContext();    
  
-    async function loginEntrada(email, password) {
+export default function AuthProvider({children}){
+ 
+    const [tokenT, setTokenT] = useState(false);
+    const [token, setToken] = useState('');
+ 
+    const autenticado = !!tokenT;
+ 
+    async function loginEntrada(email,senha){
+ 
         try {
-            const resposta = await apiLocal.post('/LoginUsuarios', {
+       
+            const resposta = await apiLocal.post('/LoginUsuarios',{
+ 
                 email,
-                password
-            })
-            console.log(resposta)
-            localStorage.setItem('@id', JSON.stringify(resposta.data.id))
-            localStorage.setItem('@nome', JSON.stringify(resposta.data.nome))
-            
+                senha
+            });
+           
+ 
+            localStorage.setItem('@id',JSON.stringify(resposta.data.id));
+            localStorage.setItem('@nome',JSON.stringify(resposta.data.nome));
+            localStorage.setItem('@token',JSON.stringify(resposta.data.token));
+ 
+            setTokenT(true)
+           
+ 
         } catch (err) {
-            toast.error(err.response.data.error)
+           
+            alert(err.response.data.error)
+ 
         }
+ 
     }
-    return (
-        <AutenticadoContextoo.Provider value={({  loginEntrada })}>
+ 
+   
+ 
+    return(
+ 
+        <AutenticadoContexto.Provider value={({autenticado, loginEntrada})}>
+ 
             {children}
-        </AutenticadoContextoo.Provider>
+ 
+        </AutenticadoContexto.Provider>
     )
 }
+ 

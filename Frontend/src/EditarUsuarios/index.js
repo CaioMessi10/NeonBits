@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { useParams, useNavigate} from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import apiLocal from "./../Api/apiLocal";
-import "./estilos.editarUsuarios.scss";
+import "./editarUsuario.css"; 
 
 export default function EditarUsuarios() {
-  const mudarTela = useNavigate()
+  const mudarTela = useNavigate();
   const { id } = useParams();
   const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
-  const [senha, setPassword] = useState("");
+  const [password, setPassword] = useState("");
+
+  
 
   useEffect(() => {
     async function consultarDados() {
@@ -18,24 +20,23 @@ export default function EditarUsuarios() {
       console.log(resposta);
       setNome(resposta.data.nome);
       setEmail(resposta.data.email);
-      setPassword(resposta.data.senha);
+      setPassword(resposta.data.password);
     }
     consultarDados();
   }, []);
 
   async function enviarAlteracao(e) {
-    try{
+    try {
       e.preventDefault();
-      const resposta = await apiLocal.put('/AlterarDadosUsuarios',{
+      const resposta = await apiLocal.put('/AlterarDadosUsuarios', {
         id,
         nome,
         email
-      })
-      mudarTela('/')
+      });
+      mudarTela('/');
+    } catch (err) {
+      alert('Erro ao Comunicar com o Servidor');
     }
-   catch (err) {
-    alert ('Erro ao Comunicar com o Servidor')
-   }
   }
 
   return (
@@ -47,22 +48,22 @@ export default function EditarUsuarios() {
           type="text"
           value={nome}
           onChange={(e) => setNome(e.target.value)}
+          placeholder="Nome"
         />
-
         <input
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          placeholder="E-mail"
         />
-
         <input
           type="password"
           disabled
-          value={senha}
+          value={password}
           onChange={(e) => setPassword(e.target.value)}
+          placeholder="password"
         />
-
-        <button>Enviar</button>
+        <button type="submit">Enviar</button>
       </form>
     </div>
   );

@@ -1,42 +1,17 @@
-import React, { useContext, useState } from "react";
-import {AutenticadoContextoo} from '../../Contexts/authContexts'
-import { toast } from "react-toastify";
-
+import Login from "./login";
 // *IMPORTAÇÕES DE ICONS* //
 import { FaInstagram } from "react-icons/fa";
-import { VscAccount } from "react-icons/vsc";
 import { FaLocationDot } from "react-icons/fa6";
 import { FaGear } from "react-icons/fa6";
 
 export default function Cabecalho() {
-  const [isMenuVisible, setMenuVisible] = useState(false);
-
-  const toggleMenu = () => setMenuVisible(!isMenuVisible);
-  const loginEntrada = useContext(AutenticadoContextoo)
- 
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-
-  async function dadosLogin(e){
-      e.preventDefault()
-      if(!email || !password){
-          toast.warning('Preencha todos os campos')
-          return
-      }
-      try{
-         await loginEntrada(email, password)
-      } catch (err){
-
-      }
-  }
   return (
     <div>
       <header>
         <div className="cabecalho">
-          <div className="icon1" onClick={toggleMenu}>
-            <VscAccount />
-          </div>
-
+        <Login />
+ 
+         
           <div className="logo-head">
             <h1 className="titulo-vintage">Vintage Playland</h1>
           </div>
@@ -56,56 +31,6 @@ export default function Cabecalho() {
 
 
 
-      {/* Área de Login e Cadastro */}
-
-
-      
-      {isMenuVisible && (
-        <div className="menu">
-          <div className="login-form">
-            <h2>Login</h2>
-            <form onSubmit={dadosLogin}>
-                <input
-                    type="text"
-                    placeholder='Digite o E-mail'
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                />
- 
-                <input
-                    type="password"
-                    placeholder='Digite a Senha'
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                />
-                <button>Enviar</button>
-            </form>
-          </div>
-
-        </div>
-      )}
-
-
-
-      {/* Área Sobre Empresa */}
-
-
-      <section
-        id="sobre-a-empresa"
-        style={{ marginTop: isMenuVisible ? "20px" : "0" }}
-      >
-        <div className="sobre-container">
-          <h2>Sobre a Empresa</h2>
-          <p>
-            Na Vintage Playland, a paixão pelos jogos vai além do virtual. Cada
-            compra é feita com a certeza de que você estará levando para casa
-            uma experiência de qualidade, com preços acessíveis e promoções
-            especiais. Prepare-se para reviver momentos inesquecíveis ou
-            descobrir novos mundos — o jogo nunca para na Vintage Playland!
-          </p>
-          <p></p>
-        </div>
-      </section>
     </div>
   );
 }

@@ -1,15 +1,22 @@
 import React, { useState, useEffect } from "react";
-import { toast } from "react-toastify";
-import apiLocal from "./../../Api/apiLocal";
 import { Link } from "react-router-dom";
+import apiLocal from "../Api/apiLocal";
+import { toast } from "react-toastify";
 
 export default function DashBoard() {
   const [dadosUsuarios, setDadosUsuarios] = useState([""]);
 
+  const iToken = localStorage.getItem("@token");
+  const token = JSON.parse(iToken);
+
   useEffect(() => {
     try {
       async function consultarDadosusuarios() {
-        const resposta = await apiLocal.get("/ConsultarUsuarios");
+        const resposta = await apiLocal.get("/ConsultarUsuarios", {
+          headers: {
+            Authorization: "Bearer " + `${token}`,
+          },
+        });
         setDadosUsuarios(resposta.data);
       }
       consultarDadosusuarios();
@@ -42,7 +49,7 @@ export default function DashBoard() {
         </div>
       ) : (
         <div className="conteinerDashboardGeral">
-          <h1>Pagina de DashBoard</h1>
+          <h1>DashBoard</h1>
           <table className="usuariosTabela">
             <thead>
               <tr key="">

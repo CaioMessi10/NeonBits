@@ -4,19 +4,19 @@ interface CadFuncionarios {
     nome: string;
     cpf: string;
     email: string;
-    password: string;
+    senha: string;
     idHierarquia: string;
     cep: string;
 }
 
 class FuncionariosServices {
-    async cadastrar_funcionarios({ nome, cpf, email, password, idHierarquia, cep }: CadFuncionarios) {
+    async cadastrar_funcionarios({ nome, cpf, email, senha, idHierarquia, cep }: CadFuncionarios) {
         const resposta = await prismaCliente.cadastroFuncionarios.create({
             data: {
                 nome: nome,
                 cpf: cpf,
                 email: email,
-                senha: password,
+                senha: senha,
                 idHierarquia: idHierarquia,
                 cep: cep,
             }

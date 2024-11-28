@@ -7,15 +7,18 @@ import { EstoqueControllers } from './Controllers/Estoque/EstoqueControllers';
 import { HierarquiaCntrollers } from './Controllers/Hierarquia/HierarquiaControllers';
 import { PedidoControllers } from './Controllers/Pedidos/PedidosControllers';
 import { LoginUsuariosControllers } from './Controllers/Login/LoginUsuariosControllers';
+import { estaAutenticado } from './middleware/estaAutenticado';
 
 const router = Router();
 
 // Usuarios
 router.post('/CadastroUsuarios', new UsuariosControllers().cadastro_usuarios);
 router.get('/ConsultarUsuarios', new UsuariosControllers().consultar_usuarios);
-
+router.post('/ConsultarUsuariosUnico', estaAutenticado, new UsuariosControllers().consultarUsuariosUnico);
+router.put('/AlterarDadosUsuarios', estaAutenticado, new UsuariosControllers().alterarDadosUsuarios);
 // Login
 router.post('/LoginUsuarios', new LoginUsuariosControllers().loginUsuarios)
+router.get('/VerificarTokenUsuario', new LoginUsuariosControllers().verificaToken)
 
 // Funcionarios
 router.post('/CadastroFuncionarios', new FuncionariosControllers().cadastro_funcionarios);

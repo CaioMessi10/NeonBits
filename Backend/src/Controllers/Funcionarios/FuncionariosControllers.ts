@@ -3,13 +3,13 @@ import { FuncionariosServices } from "../../Services/Funcionarios/FuncionariosSe
 
 class FuncionariosControllers {
     async cadastro_funcionarios(req: Request, res: Response) {
-        const { nome, cpf, email, password, idHierarquia, cep } = req.body;
+        const { nome, cpf, email, senha, idHierarquia, cep } = req.body;
         const funcionariosServices = new FuncionariosServices();
         const resposta = await funcionariosServices.cadastrar_funcionarios({
             nome,
             cpf,
             email,
-            password,
+            senha,
             idHierarquia,
             cep
         });
