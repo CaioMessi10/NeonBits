@@ -22,7 +22,7 @@ export default function AuthProvider({children}){
                 senha
             });
            
- 
+            
             localStorage.setItem('@id',JSON.stringify(resposta.data.id));
             localStorage.setItem('@nome',JSON.stringify(resposta.data.nome));
             localStorage.setItem('@token',JSON.stringify(resposta.data.token));

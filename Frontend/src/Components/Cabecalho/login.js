@@ -1,13 +1,8 @@
-
-
 import React, {useContext, useState} from 'react';
  
 import { Link } from 'react-router-dom';
 import { AutenticadoContexto } from '../../Contexts/authContexts';
 
- 
- 
- 
 export default function Login(){
  
     const {loginEntrada} = useContext(AutenticadoContexto);
@@ -19,8 +14,6 @@ export default function Login(){
     async function dadosLogin(e){
  
         e.preventDefault();
- 
- 
         if(!email || !senha){
  
             alert('Preencha todos os campos!');
@@ -32,9 +25,6 @@ export default function Login(){
             await loginEntrada(email, senha);
  
         } catch (err) {
-           
-           
- 
         }
     }
  
@@ -57,7 +47,7 @@ export default function Login(){
                 value={senha}
                 onChange={(e) => setSenha(e.target.value)}
             />
-            <button>Enviar</button>
+            <button type='submit'>Enviar</button>
         </form>
         <p>Para se cadastrar clique <Link to='/CadastraUsuarios'>AQUI</Link> </p>
       </div>

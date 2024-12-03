@@ -50,6 +50,7 @@ class UsuariosServices {
     async consultar_usuarios() {
         const resposta = await prismaCliente.cadastroUsuarios.findMany({
             select: {
+                id:true,
                 nome: true,
                 email: true,
             }

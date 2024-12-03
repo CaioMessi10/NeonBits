@@ -1,20 +1,47 @@
+import React, { useState } from "react";
 import Login from "./login";
 // *IMPORTAÇÕES DE ICONS* //
 import { FaInstagram } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
 import { FaGear } from "react-icons/fa6";
+import { FaSignInAlt } from "react-icons/fa"; // Ícone de login
 
 export default function Cabecalho() {
+  // Estado para controlar a visibilidade do formulário de login
+  const [showLogin, setShowLogin] = useState(false);
+
+  // Função para alternar a visibilidade do login
+  const toggleLogin = () => {
+    setShowLogin(!showLogin);
+  };
+
   return (
     <div>
       <header>
         <div className="cabecalho">
-        <Login />
- 
-         
+          {/* Ícone de Login */}
+          <div className="login-icon" onClick={toggleLogin}>
+            <FaSignInAlt />
+          </div>
+
+          {/* Fundo escuro atrás do formulário de login */}
+          {showLogin && <div className="login-overlay" onClick={toggleLogin}></div>}
+
+          {/* Formulário de Login, visível quando showLogin for true */}
+          {showLogin && (
+            <div className="login-form">
+              <div className="login-header">
+                {/* Botão de Voltar */}
+                <button onClick={toggleLogin} className="back-button">Voltar</button>
+              </div>
+              <Login />
+            </div>
+          )}
+
           <div className="logo-head">
             <h1 className="titulo-vintage">Vintage Playland</h1>
           </div>
+
           <div className="icon3">
             <a href="https://www.instagram.com/senacsaopaulo/">
               <FaInstagram />
@@ -28,9 +55,6 @@ export default function Cabecalho() {
           </div>
         </div>
       </header>
-
-
-
     </div>
   );
 }

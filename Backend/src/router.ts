@@ -14,8 +14,10 @@ const router = Router();
 // Usuarios
 router.post('/CadastroUsuarios', new UsuariosControllers().cadastro_usuarios);
 router.get('/ConsultarUsuarios', new UsuariosControllers().consultar_usuarios);
-router.post('/ConsultarUsuariosUnico', estaAutenticado, new UsuariosControllers().consultarUsuariosUnico);
-router.put('/AlterarDadosUsuarios', estaAutenticado, new UsuariosControllers().alterarDadosUsuarios);
+router.post('/ConsultarUsuariosUnico',  new UsuariosControllers().consultarUsuariosUnico);
+router.put('/AlterarDadosUsuarios',  new UsuariosControllers().alterarDadosUsuarios);
+router.delete('/ApagarUsuarios/:id', new UsuariosControllers().apagarUsuarios);
+
 // Login
 router.post('/LoginUsuarios', new LoginUsuariosControllers().loginUsuarios)
 router.get('/VerificarTokenUsuario', new LoginUsuariosControllers().verificaToken)
