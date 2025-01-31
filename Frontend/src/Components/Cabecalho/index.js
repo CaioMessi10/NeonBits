@@ -39,7 +39,7 @@ export default function Cabecalho() {
           )}
 
           <div className="logo-head">
-            <h1 className="titulo-vintage">Vintage Playland</h1>
+            <h1 className="titulo-vintage">Vintage Playland</h1> {/* Classe para o efeito vintage */}
           </div>
 
           <div className="icon3">
