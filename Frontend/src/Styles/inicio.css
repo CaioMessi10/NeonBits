@@ -1,117 +1,267 @@
-.container {
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f5f5f5; /* Cor de fundo mais clara */
+}
+
+.home-container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
+  color: black;
 }
 
-.navbar {
-  background-color: #333;
-  padding: 10px;
+.hero-section {
+  text-align: center;
+  background-color: #222; /* Cor de fundo mais escura para a seção de herói */
+  color: rgb(255, 255, 255); /* Cor do texto */
+  padding: 40px 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* Sombra mais pronunciada */
 }
 
-.navbar ul {
-  list-style-type: none;
-  display: flex;
-  justify-content: center;
-  margin: 0;
-}
-
-.navbar li {
-  margin: 0 15px;
-}
-
-.navbar a {
+.cta-button {
+  background-color: #f1c40f; /* Cor do botão (azul) */
   color: white;
-  text-decoration: none;
-  font-size: 1.1rem;
+  border: none;
+  border-radius: 5px;
+  padding: 12px 25px;
+  cursor: pointer;
+  font-size: 18px;
+  transition: background-color 0.3s, transform 0.3s;
 }
 
-.navbar a:hover {
-  text-decoration: underline;
+.cta-button:hover {
+  background-color: #818313; /* Cor ao passar o mouse */
+  transform: scale(1.05);
 }
 
-.intro {
-  background-color: #fff;
-  padding: 30px;
-  margin-bottom: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.intro h1 {
-  font-size: 2.5rem;
-  color: #333;
-}
-
-.intro p {
-  font-size: 1.2rem;
-  color: #555;
-  line-height: 1.5;
-}
-
-section {
-  margin-bottom: 40px;
-}
-
-.coluna {
-  background-color: #fff;
+.jogos-section, .ofertas-section {
+  margin: 20px 0;
   padding: 20px;
-  margin-bottom: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Sombra mais suave */
 }
 
-.coluna h2 {
-  color: #333;
-  font-size: 2rem;
-  margin-bottom: 10px;
-}
-
-.coluna p {
-  font-size: 1.1rem;
-  color: #555;
+h2 {
+  color: #2c3e50; /* Cor dos títulos (tom mais escuro) */
   margin-bottom: 15px;
-}
-
-.coluna ul {
-  list-style-type: none;
-  padding-left: 0;
-}
-
-.coluna li {
-  font-size: 1rem;
-  color: #444;
-  margin-bottom: 10px;
-}
-
-.coluna strong {
-  color: #000;
+  font-size: 28px; /* Tamanho de título maior */
   font-weight: bold;
+}
+
+.jogos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.jogo-card {
+  background-color: white;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  text-align: center; /* Centraliza o conteúdo do cartão */
+}
+
+.jogo-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.2);
+}
+
+.jogo-card img {
+  width: 100%;
+  max-width: 200px; /* Limita o tamanho máximo das imagens */
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 10px; /* Espaço entre a imagem e o texto */
+}
+
+.jogo-card h3 {
+  font-size: 20px;
+  font-weight: bold;
+  color: #34495e; /* Cor do nome do jogo */
+}
+
+.jogo-card p {
+  font-size: 18px;
+  color: #e74c3c; /* Cor do preço */
+}
+
+.price {
+  font-weight: bold;
+  color: #27ae60;
+}
+
+.pacote-card {
+  display: flex; /* Usa flexbox para alinhar imagem e texto */
+  align-items: center; /* Alinha verticalmente */
+  gap: 15px; /* Espaço entre a imagem e o texto */
+  padding: 15px 0;
+  border-bottom: 1px solid #ecf0f1;
+}
+
+.pacote-img {
+  width: 100px; /* Largura da imagem */
+  height: auto;
+  border-radius: 8px; /* Bordas arredondadas */
+}
+
+.pacote-card h3 {
+  font-size: 20px;
+  color: #34495e;
+}
+
+.pacote-card p {
+  font-size: 16px;
+  color: #7f8c8d;
+}
+
+.pacote-card .price {
+  font-weight: bold;
+  color: #e74c3c;
 }
 
 ul {
-  padding-left: 0;
   list-style-type: none;
+  padding: 0;
 }
 
 li {
-  margin-bottom: 10px;
-  font-size: 1.1rem;
-  color: #444;
+  padding: 12px 0;
+  border-bottom: 1px solid #ecf0f1;
+  font-size: 18px;
 }
 
-strong {
+li:last-child {
+  border-bottom: none;
+}
+
+li h3 {
+  font-size: 20px;
+  color: #34495e;
+}
+
+li p {
+  font-size: 16px;
+  color: #7f8c8d;
+}
+
+li .price {
   font-weight: bold;
-  color: #000;
+  color: #e74c3c;
 }
 
-@media (max-width: 768px) {
-  .navbar ul {
-    flex-direction: column;
-    align-items: center;
-  }
+/* Estilo para a seção de navegação */
+.navigation-section {
+  text-align: center;
+  margin: 40px 0;
+}
 
-  .coluna {
-    padding: 15px;
+.navigation-section h2 {
+  font-size: 28px;
+  color: #2c3e50;
+  margin-bottom: 20px;
+}
+
+.navigation-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.navigation-buttons a {
+  text-decoration: none;
+  background-color: #f1c40f; /* Cor do botão */
+  color: white;
+  padding: 12px 25px;
+  border-radius: 5px;
+  font-size: 18px;
+  font-weight: bold;
+  transition: background-color 0.3s, transform 0.3s;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra suave */
+}
+
+.navigation-buttons a:hover {
+  background-color: #818313; /* Cor ao passar o mouse */
+  transform: scale(1.05);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Sombra mais forte no hover */
+}
+
+/* Ajuste na aparência dos links de navegação */
+.navigation-buttons a:focus,
+.navigation-buttons a:active {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(241, 196, 15, 0.5); /* Efeito de foco */
+}
+
+/* Estilo para a nova seção de Pacotes Especiais - Acessórios */
+.pacotes-especiais-section {
+  margin: 40px 0;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Sombra mais suave */
+}
+
+.pacotes-especiais-section h2 {
+  color: #2c3e50;
+  font-size: 28px;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.pacotes-especiais-section .jogos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.pacote-card {
+  background-color: white;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  text-align: center;
+}
+
+.pacote-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.2);
+}
+
+.pacote-card img {
+  width: 100%;
+  max-width: 200px; /* Limita o tamanho máximo das imagens */
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.pacote-card h3 {
+  font-size: 20px;
+  font-weight: bold;
+  color: #34495e;
+}
+
+.pacote-card p {
+  font-size: 16px;
+  color: #7f8c8d;
+}
+
+.pacote-card .price {
+  font-weight: bold;
+  color: #e74c3c;
+}
+
+/* Melhorando a responsividade */
+@media (max-width: 768px) {
+  .jogos-grid, .pacotes-especiais-section .jogos-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Mais flexível em telas menores */
   }
 }
