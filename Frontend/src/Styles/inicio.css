@@ -258,6 +258,19 @@ li .price {
   font-weight: bold;
   color: #e74c3c;
 }
+.cart-icon a {
+  font-size: 20px;
+  color: var(--primary-color);
+  padding: 10px;
+  background-color: var(--dark-bg);
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.cart-icon a:hover {
+  background-color: var(--hover-color);
+}
+
 
 /* Melhorando a responsividade */
 @media (max-width: 768px) {

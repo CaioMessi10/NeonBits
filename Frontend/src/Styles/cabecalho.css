@@ -8,6 +8,53 @@
   --vintage-bg: linear-gradient(45deg, #f39c12, #f1c40f);
   --vintage-shadow: rgba(0, 0, 0, 0.2);
   --vintage-border: 3px solid #f1c40f;
+  --highlight-color: #9b59b6; /* Cor para destacar itens de venda */
+}
+.icon3 {
+  display: flex;          /* Flexbox para alinhar os ícones */
+  justify-content: space-evenly;  /* Espaço igual entre os ícones */
+  align-items: center;    /* Alinha os ícones verticalmente ao centro */
+  width: 200px;           /* Defina um tamanho fixo ou ajustável para o container */
+}
+
+.icon3 a {
+  display: inline-block; /* Para garantir que os ícones fiquem ao lado */
+  text-align: center;    /* Centraliza os ícones dentro do link */
+}
+
+.icon-config {
+  font-size: 30px;       /* Tamanho maior para o ícone de configurações */
+}
+
+.settings-menu {
+  position: absolute;
+  top: 50px;
+  right: 10px;
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.settings-menu ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.settings-menu li {
+  margin: 10px 0;
+}
+
+.close-settings {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.close-settings:hover {
+  background-color: #d32f2f;
 }
 
 * {
@@ -77,6 +124,49 @@ body {
   color: var(--hover-color);
 }
 
+/* Ajustes no ícone do carrinho */
+.cart-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.cart-icon a {
+  color: var(--highlight-color);
+  font-size: 28px;
+  transition: color 0.3s ease;
+}
+
+.cart-icon a:hover {
+  color: var(--primary-color);
+}
+
+.cart-icon::after {
+  content: '';
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  width: 15px;
+  height: 15px;
+  background-color: red;
+  border-radius: 50%;
+  color: white;
+  font-size: 12px;
+  text-align: center;
+  line-height: 15px;
+  font-weight: bold;
+  display: none; /* Inicialmente escondido */
+}
+
+/* Mostrar a notificação de itens no carrinho */
+.cart-icon.has-items::after {
+  display: block;
+}
+
+/* Estilo do formulário de login */
 .login-form {
   position: fixed;
   top: 50%;
@@ -207,5 +297,9 @@ body {
 
   .login-form button {
     font-size: 14px;
+  }
+
+  .cart-icon {
+    margin-left: 10px;
   }
 }

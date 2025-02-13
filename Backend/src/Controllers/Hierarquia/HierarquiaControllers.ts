@@ -10,6 +10,11 @@ class HierarquiaCntrollers{
         })
         return res.json(resposta)
     }
+    async listarHierarquia(req: Request, res: Response){
+        const enviarDadosServices = new HierarquiaServices()
+        const resposta = await enviarDadosServices.listaHierarquia()
+        return res.json(resposta)
+    }
 }
 
 export { HierarquiaCntrollers}

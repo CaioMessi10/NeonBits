@@ -18,7 +18,6 @@ class HierarquiaServices{
             
         }
 
-
         const respostas = await prismaCliente.cadHierarquia.create({
             data: {
                 nome: nome
@@ -26,7 +25,10 @@ class HierarquiaServices{
         })
         return { dados: 'Hierarquia Cadastrado Com Sucesso'}
     }
-    
+    async listaHierarquia(){
+       const resposta = await prismaCliente.cadHierarquia.findMany()
+       return resposta
+    }
 }
 
 export { HierarquiaServices}

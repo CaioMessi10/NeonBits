@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import game1 from '../Inicio/img/tle last of us.jpg';
 import game2 from '../Inicio/img/gtaV.jpg';
 import game3 from '../Inicio/img/red dead.jpg';
@@ -12,6 +12,23 @@ import keyboardImg from '../Inicio/img/teclado.jpg'; // Imagem do teclado
 import mouseImg from '../Inicio/img/mouse.jpg'; // Imagem do mouse
 
 const Inicio = () => {
+  const [cart, setCart] = useState([]); // Estado para o carrinho
+
+  // Função para adicionar ao carrinho
+  const addToCart = (item) => {
+    setCart([...cart, item]);
+  };
+
+  // Função para remover um item do carrinho
+  const removeFromCart = (item) => {
+    setCart(cart.filter((cartItem) => cartItem.nome !== item.nome));
+  };
+
+  // Função para exibir o número de itens no carrinho
+  const handleCartClick = () => {
+    alert(`Você tem ${cart.length} item(s) no carrinho!`);
+  };
+
   return (
     <div className="home-container">
       <header className="hero-section">
@@ -19,15 +36,10 @@ const Inicio = () => {
         <p>Encontre seus jogos favoritos e mergulhe em novas aventuras.</p>
       </header>
 
-      {/* Seção de navegação */}
-      <section className="navigation-section">
-        <h2>Explore Nosso Site</h2>
-        <div className="navigation-buttons">
-          <a href="#jogos-populares" className="cta-button">Jogos Populares</a>
-          <a href="#ofertas-especiais" className="cta-button">Ofertas Especiais</a>
-          <a href="#pacotes" className="cta-button">Pacotes Especiais</a>
-        </div>
-      </section>
+      {/* Carrinho */}
+      <div className="cart-icon" onClick={handleCartClick}>
+        <a href="#">🛒 Carrinho ({cart.length})</a>
+      </div>
 
       {/* Jogos Populares */}
       <section className="jogos-section" id="jogos-populares">
@@ -43,6 +55,7 @@ const Inicio = () => {
               <img src={jogo.img} alt={jogo.nome} />
               <h3>{jogo.nome}</h3>
               <p>{jogo.preco}</p>
+              <button onClick={() => addToCart(jogo)}>Adicionar ao Carrinho</button>
             </div>
           ))}
         </div>
@@ -76,6 +89,7 @@ const Inicio = () => {
               <img src={pacote.img} alt={pacote.nome} className="pacote-img" />
               <h3>{pacote.nome} - <span className="price">{pacote.preco}</span></h3>
               <p>{pacote.descricao}</p>
+              <button onClick={() => addToCart(pacote)}>Adicionar ao Carrinho</button>
             </li>
           ))}
         </ul>
@@ -115,11 +129,26 @@ const Inicio = () => {
               <img src={pacote.img} alt={pacote.nome} className="pacote-img" />
               <h3>{pacote.nome} - <span className="price">{pacote.preco}</span></h3>
               <p>{pacote.descricao}</p>
+              <button onClick={() => addToCart(pacote)}>Adicionar ao Carrinho</button>
             </li>
           ))}
         </ul>
       </section>
 
+      {/* Carrinho de Compras */}
+      <section className="cart-section">
+        <h2>Itens no Carrinho</h2>
+        <ul>
+          {cart.map((item, index) => (
+            <li key={index} className="cart-item">
+              <img src={item.img} alt={item.nome} className="cart-item-img" />
+              <h3>{item.nome} - <span className="price">{item.preco}</span></h3>
+              <button onClick={() => removeFromCart(item)}>Remover do Carrinho</button>
+            </li>
+          ))}
+        </ul>
+        {cart.length === 0 && <p>Seu carrinho está vazio.</p>}
+      </section>
     </div>
   );
 };

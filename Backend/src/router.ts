@@ -37,5 +37,6 @@ router.post('/CadastroPedido', new PedidoControllers().cadastro_pedido)
 
 //Hierarquia
 router.post('/CadastroHierarquia', new HierarquiaCntrollers().cadastro_hierarquia)
+router.get('/listarHierarquia', new HierarquiaCntrollers().listarHierarquia)
 
 export default router;
