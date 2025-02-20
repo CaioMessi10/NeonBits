@@ -8,22 +8,89 @@
   --vintage-bg: linear-gradient(45deg, #f39c12, #f1c40f);
   --vintage-shadow: rgba(0, 0, 0, 0.2);
   --vintage-border: 3px solid #f1c40f;
-  --highlight-color: #9b59b6; /* Cor para destacar itens de venda */
+  --highlight-color: #9b59b6;
 }
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: var(--dark-bg);
+  color: var(--text-color);
+}
+
+/* Estilo do cabeçalho */
+.cabecalho {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background-color: var(--dark-bg);
+  color: var(--primary-color);
+  box-shadow: 0 4px 8px var(--vintage-shadow);
+}
+
+.logo-head h1 {
+  font-size: 28px;
+  font-family: 'Arial', sans-serif;
+  color: var(--primary-color);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  animation: vintageGlow 2s ease-in-out infinite alternate;
+  letter-spacing: 2px;
+  font-weight: bold;
+}
+
+@keyframes vintageGlow {
+  0% {
+    text-shadow: 0px 0px 10px #f1c40f, 0px 0px 20px #f39c12, 0px 0px 30px #f39c12;
+  }
+  50% {
+    text-shadow: 0px 0px 15px #f1c40f, 0px 0px 25px #f39c12, 0px 0px 35px #f39c12;
+  }
+  100% {
+    text-shadow: 0px 0px 10px #f1c40f, 0px 0px 20px #f39c12, 0px 0px 30px #f39c12;
+  }
+}
+
+.login-icon {
+  cursor: pointer;
+  font-size: 28px;
+  color: var(--primary-color);
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.login-icon:hover {
+  transform: scale(1.1);
+  color: var(--hover-color);
+}
+
+/* Estilo dos ícones */
 .icon3 {
-  display: flex;          /* Flexbox para alinhar os ícones */
-  justify-content: space-evenly;  /* Espaço igual entre os ícones */
-  align-items: center;    /* Alinha os ícones verticalmente ao centro */
-  width: 200px;           /* Defina um tamanho fixo ou ajustável para o container */
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 200px;
 }
 
 .icon3 a {
-  display: inline-block; /* Para garantir que os ícones fiquem ao lado */
-  text-align: center;    /* Centraliza os ícones dentro do link */
+  color: var(--primary-color);
+  font-size: 28px;
+  margin: 0 12px;
+  transition: color 0.3s ease;
 }
 
-.icon-config {
-  font-size: 30px;       /* Tamanho maior para o ícone de configurações */
+.icon3 a:hover {
+  color: var(--hover-color);
+}
+
+.settings-icon {
+  cursor: pointer;
+  font-size: 28px;
+  color: var(--primary-color);
 }
 
 .settings-menu {
@@ -57,113 +124,14 @@
   background-color: #d32f2f;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: 'Arial', sans-serif;
-  background-color: var(--dark-bg);
-  color: var(--text-color);
-}
-
-.cabecalho {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 20px;
-  background-color: var(--dark-bg);
-  color: var(--primary-color);
-  box-shadow: 0 4px 8px var(--vintage-shadow);
-}
-
-.login-icon {
-  cursor: pointer;
-  font-size: 28px;
-  color: var(--primary-color);
-  transition: transform 0.3s ease, color 0.3s ease;
-}
-
-.login-icon:hover {
-  transform: scale(1.1);
-  color: var(--hover-color);
-}
-
-.logo-head h1 {
-  font-size: 28px;
-  font-family: 'Arial', sans-serif;
-  color: var(--primary-color);
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-  animation: vintageGlow 2s ease-in-out infinite alternate;
-  letter-spacing: 2px;
-  font-weight: bold;
-}
-
-@keyframes vintageGlow {
-  0% {
-    text-shadow: 0px 0px 10px #f1c40f, 0px 0px 20px #f39c12, 0px 0px 30px #f39c12;
-  }
-  50% {
-    text-shadow: 0px 0px 15px #f1c40f, 0px 0px 25px #f39c12, 0px 0px 35px #f39c12;
-  }
-  100% {
-    text-shadow: 0px 0px 10px #f1c40f, 0px 0px 20px #f39c12, 0px 0px 30px #f39c12;
-  }
-}
-
-.icon3 a {
-  color: var(--primary-color);
-  font-size: 28px;
-  margin: 0 12px;
-  transition: color 0.3s ease;
-}
-
-.icon3 a:hover {
-  color: var(--hover-color);
-}
-
-/* Ajustes no ícone do carrinho */
-.cart-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  padding: 8px;
-  cursor: pointer;
-}
-
-.cart-icon a {
-  color: var(--highlight-color);
-  font-size: 28px;
-  transition: color 0.3s ease;
-}
-
-.cart-icon a:hover {
-  color: var(--primary-color);
-}
-
-.cart-icon::after {
-  content: '';
-  position: absolute;
-  top: -5px;
-  right: -5px;
-  width: 15px;
-  height: 15px;
-  background-color: red;
-  border-radius: 50%;
-  color: white;
-  font-size: 12px;
-  text-align: center;
-  line-height: 15px;
-  font-weight: bold;
-  display: none; /* Inicialmente escondido */
-}
-
-/* Mostrar a notificação de itens no carrinho */
-.cart-icon.has-items::after {
-  display: block;
+.login-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 999;
 }
 
 /* Estilo do formulário de login */
@@ -222,84 +190,4 @@ body {
   background-color: var(--hover-color);
   color: var(--dark-bg);
   box-shadow: 0 4px 8px var(--vintage-shadow);
-}
-
-.login-form input {
-  margin-bottom: 15px;
-  padding: 12px 15px;
-  width: 100%;
-  border-radius: 8px;
-  border: 2px solid var(--primary-color);
-  background-color: var(--light-bg);
-  color: var(--text-color);
-  font-size: 16px;
-  transition: border-color 0.3s ease;
-  box-shadow: 0 2px 4px var(--vintage-shadow);
-}
-
-.login-form input:focus {
-  border-color: var(--hover-color);
-  outline: none;
-}
-
-.login-form button {
-  padding: 12px;
-  width: 100%;
-  background-color: var(--primary-color);
-  color: var(--dark-bg);
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.3s ease;
-  box-shadow: 0 4px 6px var(--vintage-shadow);
-}
-
-.login-form button:hover {
-  background-color: var(--hover-color);
-  box-shadow: 0 6px 8px var(--vintage-shadow);
-}
-
-.login-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
-  z-index: 999;
-}
-
-@media (max-width: 768px) {
-  .cabecalho {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .logo-head h1 {
-    font-size: 24px;
-  }
-
-  .login-form {
-    padding: 25px 20px;
-    width: 90%;
-    max-width: 350px;
-  }
-
-  .back-button {
-    font-size: 14px;
-  }
-
-  .login-form input {
-    padding: 10px;
-    font-size: 14px;
-  }
-
-  .login-form button {
-    font-size: 14px;
-  }
-
-  .cart-icon {
-    margin-left: 10px;
-  }
 }

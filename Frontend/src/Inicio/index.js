@@ -1,32 +1,85 @@
 import React, { useState } from 'react';
+import Modal from 'react-modal';
+
+// Importação de imagens
 import game1 from '../Inicio/img/tle last of us.jpg';
 import game2 from '../Inicio/img/gtaV.jpg';
 import game3 from '../Inicio/img/red dead.jpg';
 import game4 from '../Inicio/img/ea25.jpg';
+import game5 from '../Inicio/img/ark.jpg';
+import game6 from '../Inicio/img/enigma.jpg';
+import game7 from '../Inicio/img/Mouthwashing.jpg';
+import game8 from '../Inicio/img/assassin.jpg'
+import game9 from '../Inicio/img/dayz.jpg'
+import game10 from '../Inicio/img/diablo.jpg'
+import game11 from '../Inicio/img/godofwar.jpg'
+import game12 from '../Inicio/img/naruto.jpg'
+import game13 from '../Inicio/img/palword.jpg'
+import game14 from '../Inicio/img/planetzoo.jpg'
+import game15 from '../Inicio/img/wukong.jpg'
 import adventurePackageImg from '../Inicio/img/witcher.cyber.PNG';
 import sportsPackageImg from '../Inicio/img/nba.f1.PNG';
 import familyPackageImg from '../Inicio/img/mine.lego.PNG';
-import headsetImg from '../Inicio/img/fonegamer.jpg'; // Imagem do fone gamer
-import pcImg from '../Inicio/img/pcgamer.jpg'; // Imagem do PC gamer
-import keyboardImg from '../Inicio/img/teclado.jpg'; // Imagem do teclado
-import mouseImg from '../Inicio/img/mouse.jpg'; // Imagem do mouse
+import headsetImg from '../Inicio/img/fonegamer.jpg';
+import pcImg from '../Inicio/img/pcgamer.jpg';
+import keyboardImg from '../Inicio/img/teclado.jpg';
+import mouseImg from '../Inicio/img/mouse.jpg';
+
+// Carrossel
+import Slider from 'react-slick';
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
 
 const Inicio = () => {
   const [cart, setCart] = useState([]); // Estado para o carrinho
+  const [isModalOpen, setIsModalOpen] = useState(false); // Controle do estado do modal
 
-  // Função para adicionar ao carrinho
+  //abrir o modal
+  const openCartModal = () => {
+    setIsModalOpen(true);
+  };
+
+  //fechar o modal
+  const closeCartModal = () => {
+    setIsModalOpen(false);
+  };
+
+  //adicionar ao carrinho
   const addToCart = (item) => {
     setCart([...cart, item]);
   };
 
-  // Função para remover um item do carrinho
+  //remover um item do carrinho
   const removeFromCart = (item) => {
     setCart(cart.filter((cartItem) => cartItem.nome !== item.nome));
   };
 
-  // Função para exibir o número de itens no carrinho
+  //exibir o número de itens no carrinho
   const handleCartClick = () => {
-    alert(`Você tem ${cart.length} item(s) no carrinho!`);
+    openCartModal();
+  };
+
+  //carrossel
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 1,
+        },
+      },
+    ],
   };
 
   return (
@@ -36,29 +89,70 @@ const Inicio = () => {
         <p>Encontre seus jogos favoritos e mergulhe em novas aventuras.</p>
       </header>
 
-      {/* Carrinho */}
+      {/* Carrinho (com ícone e contagem de itens) */}
       <div className="cart-icon" onClick={handleCartClick}>
         <a href="#">🛒 Carrinho ({cart.length})</a>
       </div>
 
-      {/* Jogos Populares */}
+      {/* Modal do Carrinho */}
+      <Modal isOpen={isModalOpen} onRequestClose={closeCartModal} contentLabel="Carrinho">
+        <div className="cart-modal">
+          <h2>Itens no Carrinho</h2>
+          <ul>
+            {cart.length > 0 ? (
+              cart.map((item, index) => (
+                <li key={index} className="cart-item">
+                  <img src={item.img} alt={item.nome} className="cart-item-img" />
+                  <h3>{item.nome} - <span className="price">{item.preco}</span></h3>
+                  <button onClick={() => removeFromCart(item)}>Remover</button>
+                </li>
+              ))
+            ) : (
+              <p>Seu carrinho está vazio.</p>
+            )}
+          </ul>
+          <button onClick={closeCartModal}>Fechar</button>
+          {cart.length > 0 && (
+            <div className="checkout-container">
+              <button onClick={() => alert('Finalizando a compra...')}>Finalizar Compra</button>
+            </div>
+          )}
+        </div>
+      </Modal>
+
+      {/* Jogos Populares - Carrossel */}
       <section className="jogos-section" id="jogos-populares">
         <h2>Jogos Populares</h2>
-        <div className="jogos-grid">
+        <Slider {...settings}>
           {[ 
             { nome: 'The Last of Us', preco: 'R$ 249,00', img: game1 },
             { nome: 'GTA V', preco: 'R$ 99,00', img: game2 },
             { nome: 'Red Dead Redemption 2', preco: 'R$ 159,00', img: game3 },
             { nome: 'EA 25', preco: 'R$ 199,00', img: game4 },
+            { nome: 'Ark: Survival Evolved', preco: 'R$ 126,00', img: game5 },
+            { nome: 'Enigma do Medo', preco: 'R$ 69,00', img: game6 },
+            { nome: 'Mouthwashing', preco: 'R$ 39,00', img: game7 },
+            { nome: 'Assassin’s Creed', preco: 'R$ 199,00', img: game8 },
+            { nome: 'DayZ', preco: 'R$ 179,00', img: game9 },
+            { nome: 'Diablo IV', preco: 'R$ 299,00', img: game10 },
+            { nome: 'God of War', preco: 'R$ 249,00', img: game11 },
+            { nome: 'Naruto Storm', preco: 'R$ 179,00', img: game12 },
+            { nome: 'Palworld', preco: 'R$ 89,00', img: game13 },
+            { nome: 'Planet Zoo', preco: 'R$ 169,00', img: game14 },
+            { nome: 'Wukong', preco: 'R$ 149,00', img: game15 },
           ].map((jogo, index) => (
             <div key={index} className="jogo-card">
-              <img src={jogo.img} alt={jogo.nome} />
-              <h3>{jogo.nome}</h3>
-              <p>{jogo.preco}</p>
-              <button onClick={() => addToCart(jogo)}>Adicionar ao Carrinho</button>
+              <div className="image-container">
+                <img src={jogo.img} alt={jogo.nome} />
+              </div>
+              <div className="description-container">
+                <h3>{jogo.nome}</h3>
+                <p>{jogo.preco}</p>
+                <button onClick={() => addToCart(jogo)}>Adicionar ao Carrinho</button>
+              </div>
             </div>
           ))}
-        </div>
+        </Slider>
       </section>
 
       {/* Ofertas Especiais */}
@@ -133,21 +227,6 @@ const Inicio = () => {
             </li>
           ))}
         </ul>
-      </section>
-
-      {/* Carrinho de Compras */}
-      <section className="cart-section">
-        <h2>Itens no Carrinho</h2>
-        <ul>
-          {cart.map((item, index) => (
-            <li key={index} className="cart-item">
-              <img src={item.img} alt={item.nome} className="cart-item-img" />
-              <h3>{item.nome} - <span className="price">{item.preco}</span></h3>
-              <button onClick={() => removeFromCart(item)}>Remover do Carrinho</button>
-            </li>
-          ))}
-        </ul>
-        {cart.length === 0 && <p>Seu carrinho está vazio.</p>}
       </section>
     </div>
   );
