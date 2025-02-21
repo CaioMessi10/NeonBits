@@ -108,13 +108,13 @@ const Inicio = () => {
                 </li>
               ))
             ) : (
-              <p>Seu carrinho está vazio.</p>
+              <p>Seu carrinho está Vazio 😔... (igual seu coração)</p>
             )}
           </ul>
           <button onClick={closeCartModal}>Fechar</button>
           {cart.length > 0 && (
             <div className="checkout-container">
-              <button onClick={() => alert('Finalizando a compra...')}>Finalizar Compra</button>
+              <button onClick={() => alert('Ainda em Manutenção favor Esperar...')}>Finalizar Compra</button>
             </div>
           )}
         </div>
@@ -169,7 +169,7 @@ const Inicio = () => {
             { 
               nome: 'Pacote Esportivo', 
               preco: 'R$ 249,00', 
-              descricao: 'F1 + NBA 2K24', 
+              descricao: 'NBA 2K24 + F1 ', 
               img: sportsPackageImg 
             },
             { 
@@ -220,6 +220,7 @@ const Inicio = () => {
             },
           ].map((pacote, index) => (
             <li key={index} className="pacote-card">
+             
               <img src={pacote.img} alt={pacote.nome} className="pacote-img" />
               <h3>{pacote.nome} - <span className="price">{pacote.preco}</span></h3>
               <p>{pacote.descricao}</p>

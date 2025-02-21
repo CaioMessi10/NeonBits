@@ -56,43 +56,63 @@ body {
   }
 }
 
-.login-icon {
-  cursor: pointer;
-  font-size: 28px;
-  color: var(--primary-color);
-  transition: transform 0.3s ease, color 0.3s ease;
-}
-
-.login-icon:hover {
-  transform: scale(1.1);
-  color: var(--hover-color);
-}
-
-/* Estilo dos ícones */
+/* Estilo dos ícones na direita */
 .icon3 {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
   width: 200px;
 }
 
+/* Estilo dos links dos ícones */
 .icon3 a {
   color: var(--primary-color);
   font-size: 28px;
   margin: 0 12px;
   transition: color 0.3s ease;
 }
+/* Estilo da seção de ícones */
+.icons-right {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 15px;
+}
 
+/* Estilo para os ícones dentro da seção */
+.icons-right a, .settings-icon, .login-icon {
+  color: var(--primary-color);
+  font-size: 28px;
+  transition: transform 0.3s ease, color 0.3s ease;
+  cursor: pointer;
+}
+
+.icons-right a:hover, .settings-icon:hover, .login-icon:hover {
+  transform: scale(1.1);
+  color: var(--hover-color);
+}
+
+
+/* Efeito de hover nos links dos ícones */
 .icon3 a:hover {
   color: var(--hover-color);
 }
 
-.settings-icon {
+/* Estilo dos ícones de configurações e login */
+.settings-icon, .login-icon {
   cursor: pointer;
   font-size: 28px;
   color: var(--primary-color);
+  transition: transform 0.3s ease, color 0.3s ease;
 }
 
+/* Efeito de hover nos ícones de configurações e login */
+.settings-icon:hover, .login-icon:hover {
+  transform: scale(1.1);
+  color: var(--hover-color);
+}
+
+/* Menu de configurações */
 .settings-menu {
   position: absolute;
   top: 50px;
@@ -124,6 +144,7 @@ body {
   background-color: #d32f2f;
 }
 
+/* Overlay do login */
 .login-overlay {
   position: fixed;
   top: 0;
@@ -167,6 +188,7 @@ body {
   }
 }
 
+/* Cabeçalho do formulário de login */
 .login-header {
   display: flex;
   justify-content: space-between;
