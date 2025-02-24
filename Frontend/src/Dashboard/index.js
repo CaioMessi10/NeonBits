@@ -56,6 +56,7 @@ export default function DashBoard() {
                 :
                 <div className='conteinerDashboardGeral'>
                     <h1>Pagina de DashBoard</h1>
+                    <Link to= {'/CadastroProduto'} className='linkProdutos'>Produtos</Link>
                     <table className='usuariosTabela'>
                         <thead>
                             <tr key="">

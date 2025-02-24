@@ -3,20 +3,18 @@ import prismaCliente from "../../prisma/index";
 interface CadProdutos {
     nomeProd: string;
     categoria: string;
-    categoria_estoque: string
     precoProd: string;
-    idEstoque: string
+    banner: string
 }
 
 class ProdutosServices {
-    async cadastrar_produtos({ nomeProd, categoria, categoria_estoque, precoProd, idEstoque }: CadProdutos) {
+    async cadastrar_produtos({ nomeProd, categoria, precoProd, banner}: CadProdutos) {
         const resposta = await prismaCliente.cadastroProdutos.create({
             data: {
                 nomeProd: nomeProd,
                 categoria: categoria,
-                categoria_estoque: categoria_estoque,
                 precoProd: precoProd,
-                idEstoque: idEstoque
+                banner: banner,
             }
         });
         return { dados: 'Produto Cadastrado com Sucesso', produto: resposta };

@@ -54,29 +54,13 @@ model CadastroProdutos {
   id        String   @id @default(uuid())
   nomeProd  String
   categoria String
-  categoria_estoque String
   precoProd String
+  banner String
   created   DateTime @default(now())
   updated   DateTime @updatedAt
 
-  estoque         CadEstoque[]
-  idEstoque String
   pedidos CadPedidos[]
   @@map("cadastro_produtos")
-}
-
-model CadEstoque {
-  id          String @id @default(uuid())
-  nomeProd    String
-
-  created DateTime @default(now())
-  updated DateTime @updatedAt
-
-  produtos     CadastroProdutos?     @relation(fields: [idProdutos], references: [id])
-  idProdutos String?
-
-
-  @@map("cadastro_estoque")
 }
 
 model CadPedidos {

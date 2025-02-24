@@ -1,0 +1,58 @@
+/* Estilos gerais para o container */
+.conteinerGeralProdutos {
+    background-color: #1a1a1a; /* Cor de fundo escura */
+    color: white; /* Texto branco */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 2.5em;
+    color: #FFCC00; /* Amarelo */
+    margin-bottom: 30px;
+}
+
+form {
+    background-color: #333333; /* Cor de fundo do formulário */
+    padding: 20px;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #555555;
+    background-color: #222222; /* Fundo escuro dos campos */
+    color: white; /* Texto branco nos campos */
+}
+
+input[type="text"]:focus,
+input[type="file"]:focus {
+    border-color: #FFCC00; /* Foco nos campos com borda amarela */
+    outline: none;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #FFCC00; /* Amarelo */
+    color: black; /* Texto preto no botão */
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #e6b800; /* Amarelo mais escuro ao passar o mouse */
+}

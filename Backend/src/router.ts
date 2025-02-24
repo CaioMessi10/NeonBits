@@ -1,15 +1,17 @@
 import { Router } from 'express';
+import multer  from 'multer';
+import uploandConfig from './config/multer'
 
 import { UsuariosControllers } from './Controllers/Usuarios/usuariosConstrollers';
 import { FuncionariosControllers } from './Controllers/Funcionarios/FuncionariosControllers';
 import { ProdutosControllers } from './Controllers/Produtos/ProdutosControllers';
-import { EstoqueControllers } from './Controllers/Estoque/EstoqueControllers';
 import { HierarquiaCntrollers } from './Controllers/Hierarquia/HierarquiaControllers';
 import { PedidoControllers } from './Controllers/Pedidos/PedidosControllers';
 import { LoginUsuariosControllers } from './Controllers/Login/LoginUsuariosControllers';
-import { estaAutenticado } from './middleware/estaAutenticado';
 
+import { estaAutenticado } from './middleware/estaAutenticado';
 const router = Router();
+const upload = multer(uploandConfig.upload('./tmp'))
 
 // Usuarios
 router.post('/CadastroUsuarios', new UsuariosControllers().cadastro_usuarios);
@@ -27,10 +29,8 @@ router.post('/CadastroFuncionarios', new FuncionariosControllers().cadastro_func
 router.get('/ConsultarFuncionarios', new FuncionariosControllers().consultar_funcionarios);
 
 // Produtos
-router.post('/CadastroProdutos', new ProdutosControllers().cadastro_produtos);
+router.post('/CadastroProdutos',upload.single('file'), new ProdutosControllers().cadastro_produtos);
 
-//Estoque
-router.post('/CadastroEstoque', new EstoqueControllers().cadastro_estoque)
 
 //Pedidos
 router.post('/CadastroPedido', new PedidoControllers().cadastro_pedido)
