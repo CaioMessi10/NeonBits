@@ -12,10 +12,11 @@ export default function Produtos() {
 
     const navegar = useNavigate()
 
-    const [nome, setNome] = useState('')
-    const [preco, setPreco] = useState('')
+    const [nomeProd, setNome] = useState('')
+    const [precoProd, setPreco] = useState('')
+    const [descricao, setDescricao] = useState('')
     const [imagem, setImagem] = useState(null)
-    console.log(nome, preco)
+    console.log(nomeProd, precoProd)
 
     function pegarImagem(e) {
         if (!e.target.files) {
@@ -31,8 +32,9 @@ export default function Produtos() {
         try {
             e.preventDefault()
             const data = new FormData()
-            data.append('nome', nome)
-            data.append('preco', preco)
+            data.append('nome', nomeProd)
+            data.append('preco', precoProd)
+            data.append('descricao', descricao)
             data.append('file', imagem)
             const resposta = await apiLocal.post('/CadastrarProdutos', data, {
                 headers: {
@@ -57,19 +59,28 @@ export default function Produtos() {
             <form onSubmit={cadastrarProduto}>                   
                     <input
                         type="text"
-                        value={nome}
+                        value={nomeProd}
                         onChange={(e) => setNome(e.target.value)}
+                        placeholder="insira o Nome"
                     />                  
                     <input
                         type="text"
-                        value={preco}
+                        value={precoProd}
                         onChange={(e) => setPreco(e.target.value)}
+                        placeholder="Insira o Preço"
+                    />
+                    <input
+                        type="text"
+                        value={descricao}
+                        onChange={(e) => setDescricao(e.target.value)}
+                        placeholder="Insira a Descrição"
                     />
                     
                     <input
                         type="file"
                         accept='image/jpeg, image/png'
                         onChange={pegarImagem}
+                        placeholder="Insira a Imagem"
                     />
                     <button type='submit'>Cadastrar</button>
                 </form>

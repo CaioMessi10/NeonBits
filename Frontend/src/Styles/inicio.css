@@ -372,3 +372,88 @@ button:hover {
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   }
 }
+/* Estilos para a seção Jogos Recém Adicionados */
+.jogos-section {
+  margin: 20px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+}
+
+.jogos-section h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.jogos-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 16px;
+}
+
+.jogo-card-small {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.image-container-small {
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-container-small img {
+  width: auto;
+  height: 100%;
+  object-fit: cover;
+}
+
+.description-container-small {
+  padding: 10px;
+  text-align: center;
+}
+
+.description-container-small h3 {
+  font-size: 18px;
+  margin: 10px 0;
+}
+
+.description-container-small p {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.description-container-small button {
+  background-color: #f1c40f;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.description-container-small button:hover {
+  background-color: #977a06;
+}
+
+/* Ajustes adicionais para garantir que o layout seja responsivo e sem espaços vazios */
+@media (max-width: 768px) {
+  .jogos-list {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .jogos-list {
+    grid-template-columns: 1fr;
+  }
+}

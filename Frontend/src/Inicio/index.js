@@ -17,6 +17,11 @@ import game12 from '../Inicio/img/naruto.jpg'
 import game13 from '../Inicio/img/palword.jpg'
 import game14 from '../Inicio/img/planetzoo.jpg'
 import game15 from '../Inicio/img/wukong.jpg'
+import game16 from '../Inicio/img/DetroitBecomeHuman.png'
+import game17 from '../Inicio/img/onePiece.png'
+import game19 from '../Inicio/img/thesims2.jpg'
+import game20 from '../Inicio/img/MarvelsSpiderMan.jpg'
+
 import adventurePackageImg from '../Inicio/img/witcher.cyber.PNG';
 import sportsPackageImg from '../Inicio/img/nba.f1.PNG';
 import familyPackageImg from '../Inicio/img/mine.lego.PNG';
@@ -95,30 +100,6 @@ const Inicio = () => {
       </div>
 
       {/* Modal do Carrinho */}
-      <Modal isOpen={isModalOpen} onRequestClose={closeCartModal} contentLabel="Carrinho">
-        <div className="cart-modal">
-          <h2>Itens no Carrinho</h2>
-          <ul>
-            {cart.length > 0 ? (
-              cart.map((item, index) => (
-                <li key={index} className="cart-item">
-                  <img src={item.img} alt={item.nome} className="cart-item-img" />
-                  <h3>{item.nome} - <span className="price">{item.preco}</span></h3>
-                  <button onClick={() => removeFromCart(item)}>Remover</button>
-                </li>
-              ))
-            ) : (
-              <p>Seu carrinho está Vazio 😔... (igual seu coração)</p>
-            )}
-          </ul>
-          <button onClick={closeCartModal}>Fechar</button>
-          {cart.length > 0 && (
-            <div className="checkout-container">
-              <button onClick={() => alert('Ainda em Manutenção favor Esperar...')}>Finalizar Compra</button>
-            </div>
-          )}
-        </div>
-      </Modal>
 
       {/* Jogos Populares - Carrossel */}
       <section className="jogos-section" id="jogos-populares">
@@ -153,6 +134,30 @@ const Inicio = () => {
             </div>
           ))}
         </Slider>
+      </section>
+
+      {/* Jogos Recém Adicionados - Menor */}
+      <section className="jogos-section" id="jogos-recem-adicionados">
+        <h2>Jogos Recém Adicionados</h2>
+        <div className="jogos-list">
+          {[ 
+            { nome: 'Detroit: Become Human', preco: 'R$ 199,00', img: game16 },
+            { nome: 'One Piece: Pirate Warriors 4', preco: 'R$ 179,00', img: game17 },
+            { nome: 'The Sims 2', preco: 'R$ 99,00', img: game19 },
+            { nome: 'Marvel’s Spider-Man', preco: 'R$ 249,00', img: game20 },
+          ].map((jogo, index) => (
+            <div key={index} className="jogo-card-small">
+              <div className="image-container-small">
+                <img src={jogo.img} alt={jogo.nome} />
+              </div>
+              <div className="description-container-small">
+                <h3>{jogo.nome}</h3>
+                <p>{jogo.preco}</p>
+                <button onClick={() => addToCart(jogo)}>Adicionar</button>
+              </div>
+            </div>
+          ))}
+        </div>
       </section>
 
       {/* Ofertas Especiais */}
@@ -220,7 +225,6 @@ const Inicio = () => {
             },
           ].map((pacote, index) => (
             <li key={index} className="pacote-card">
-             
               <img src={pacote.img} alt={pacote.nome} className="pacote-img" />
               <h3>{pacote.nome} - <span className="price">{pacote.preco}</span></h3>
               <p>{pacote.descricao}</p>
@@ -229,6 +233,30 @@ const Inicio = () => {
           ))}
         </ul>
       </section>
+              <Modal isOpen={isModalOpen} onRequestClose={closeCartModal} contentLabel="Carrinho">
+                <div className="cart-modal">
+                  <h2>Itens no Carrinho</h2>
+                  <ul>
+                    {cart.length > 0 ? (
+                      cart.map((item, index) => (
+                        <li key={index} className="cart-item">
+                          <img src={item.img} alt={item.nome} className="cart-item-img" />
+                          <h3>{item.nome} - <span className="price">{item.preco}</span></h3>
+                          <button onClick={() => removeFromCart(item)}>Remover</button>
+                        </li>
+                      ))
+                    ) : (
+                      <p>Seu carrinho está Vazio 😔... (igual seu coração)</p>
+                    )}
+                  </ul>
+                  <button onClick={closeCartModal}>Fechar</button>
+                  {cart.length > 0 && (
+                    <div className="checkout-container">
+                      <button onClick={() => alert('Ainda em Manutenção favor Esperar...')}>Finalizar Compra</button>
+                    </div>
+                  )}
+                </div>
+              </Modal>
     </div>
   );
 };

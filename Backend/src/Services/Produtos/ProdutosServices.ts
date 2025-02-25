@@ -2,17 +2,17 @@ import prismaCliente from "../../prisma/index";
 
 interface CadProdutos {
     nomeProd: string;
-    categoria: string;
+    descricao: string;
     precoProd: string;
     banner: string
 }
 
 class ProdutosServices {
-    async cadastrar_produtos({ nomeProd, categoria, precoProd, banner}: CadProdutos) {
+    async cadastrar_produtos({ nomeProd, descricao, precoProd, banner}: CadProdutos) {
         const resposta = await prismaCliente.cadastroProdutos.create({
             data: {
                 nomeProd: nomeProd,
-                categoria: categoria,
+                descricao: descricao,
                 precoProd: precoProd,
                 banner: banner,
             }
