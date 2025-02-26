@@ -9,6 +9,7 @@ interface CadProdutos {
 
 class ProdutosServices {
     async cadastrar_produtos({ nomeProd, descricao, precoProd, banner}: CadProdutos) {
+
         const resposta = await prismaCliente.cadastroProdutos.create({
             data: {
                 nomeProd: nomeProd,
@@ -16,6 +17,7 @@ class ProdutosServices {
                 precoProd: precoProd,
                 banner: banner,
             }
+            
         });
         return { dados: 'Produto Cadastrado com Sucesso', produto: resposta };
     }

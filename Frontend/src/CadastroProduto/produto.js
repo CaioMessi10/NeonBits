@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react'
+import { useState, useContext, useEffect } from 'react'
 import { AutenticadoContexto } from '../Contexts/authContexts'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
@@ -8,7 +8,6 @@ import '../Styles/cadProduto.css'
 export default function Produtos() {
 
     const { verificarToken, token } = useContext(AutenticadoContexto)
-    verificarToken()
 
     const navegar = useNavigate()
 
@@ -17,6 +16,10 @@ export default function Produtos() {
     const [descricao, setDescricao] = useState('')
     const [imagem, setImagem] = useState(null)
     console.log(nomeProd, precoProd)
+
+    useEffect(() =>{
+        verificarToken();
+    },[verificarToken])
 
     function pegarImagem(e) {
         if (!e.target.files) {
@@ -32,11 +35,11 @@ export default function Produtos() {
         try {
             e.preventDefault()
             const data = new FormData()
-            data.append('nome', nomeProd)
-            data.append('preco', precoProd)
+            data.append('nomeProd', nomeProd)
+            data.append('precoProd', precoProd)
             data.append('descricao', descricao)
             data.append('file', imagem)
-            const resposta = await apiLocal.post('/CadastrarProdutos', data, {
+            const resposta = await apiLocal.post('/CadastroProdutos', data, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
@@ -50,7 +53,8 @@ export default function Produtos() {
         }
         setNome('')
         setPreco('')
-        setImagem(null)
+        setDescricao('')
+        setImagem('')
     }
 
     return (

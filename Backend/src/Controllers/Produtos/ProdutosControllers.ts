@@ -3,7 +3,8 @@ import { ProdutosServices } from "../../Services/Produtos/ProdutosServices";
 
 class ProdutosControllers {
     async cadastro_produtos(req: Request, res: Response) {
-        const { nomeProd, descricao, precoProd,} = req.body
+        const { nomeProd, descricao, precoProd} = req.body
+console.log(nomeProd, descricao, precoProd)
         if(!req.file){
             throw new Error('Imagem com Problemas')
         }else{

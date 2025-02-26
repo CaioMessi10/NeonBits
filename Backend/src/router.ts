@@ -15,10 +15,10 @@ const upload = multer(uploandConfig.upload('./tmp'))
 
 // Usuarios
 router.post('/CadastroUsuarios', new UsuariosControllers().cadastro_usuarios);
-router.get('/ConsultarUsuarios', new UsuariosControllers().consultar_usuarios);
-router.post('/ConsultarUsuariosUnico',  new UsuariosControllers().consultarUsuariosUnico);
-router.put('/AlterarDadosUsuarios',  new UsuariosControllers().alterarDadosUsuarios);
-router.delete('/ApagarUsuarios/:id', new UsuariosControllers().apagarUsuarios);
+router.get('/ConsultarUsuarios',estaAutenticado, new UsuariosControllers().consultar_usuarios);
+router.post('/ConsultarUsuariosUnico',estaAutenticado,  new UsuariosControllers().consultarUsuariosUnico);
+router.put('/AlterarDadosUsuarios',estaAutenticado,  new UsuariosControllers().alterarDadosUsuarios);
+router.delete('/ApagarUsuarios/:id',estaAutenticado, new UsuariosControllers().apagarUsuarios);
 
 // Login
 router.post('/LoginUsuarios', new LoginUsuariosControllers().loginUsuarios)
@@ -26,10 +26,10 @@ router.get('/VerificarTokenUsuario', new LoginUsuariosControllers().verificaToke
 
 // Funcionarios
 router.post('/CadastroFuncionarios', new FuncionariosControllers().cadastro_funcionarios);
-router.get('/ConsultarFuncionarios', new FuncionariosControllers().consultar_funcionarios);
+router.get('/ConsultarFuncionarios',estaAutenticado, new FuncionariosControllers().consultar_funcionarios);
 
 // Produtos
-router.post('/CadastroProdutos',upload.single('file'), new ProdutosControllers().cadastro_produtos);
+router.post('/CadastroProdutos',estaAutenticado, upload.single('file'), new ProdutosControllers().cadastro_produtos);
 
 
 //Pedidos

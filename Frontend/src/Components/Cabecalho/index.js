@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Login from "./login";
 // *IMPORTAÇÕES DE ICONS* //
 import { FaInstagram } from "react-icons/fa";
@@ -13,6 +13,9 @@ export default function Cabecalho() {
   // Estado para controlar a visibilidade da seção de configurações
   const [showSettings, setShowSettings] = useState(false);
 
+  // Estado para controlar a transparência do cabeçalho
+  const [isScrolled, setIsScrolled] = useState(false);
+
   // Função para alternar a visibilidade do login
   const toggleLogin = () => {
     setShowLogin(!showLogin);
@@ -23,10 +26,28 @@ export default function Cabecalho() {
     setShowSettings(!showSettings);
   };
 
+  // Efeito para detectar a rolagem e mudar a opacidade do cabeçalho
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    // Limpar o event listener quando o componente for desmontado
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <div>
       <header>
-        <div className="cabecalho">
+        <div className={`cabecalho ${isScrolled ? 'scrolled' : ''}`}>
           {/* Logo */}
           <div className="logo-head">
             <h1 className="titulo-vintage">Vintage Playland</h1> {/* Classe para o efeito vintage */}

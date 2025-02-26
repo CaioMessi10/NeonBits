@@ -9,18 +9,18 @@ import game4 from '../Inicio/img/ea25.jpg';
 import game5 from '../Inicio/img/ark.jpg';
 import game6 from '../Inicio/img/enigma.jpg';
 import game7 from '../Inicio/img/Mouthwashing.jpg';
-import game8 from '../Inicio/img/assassin.jpg'
-import game9 from '../Inicio/img/dayz.jpg'
-import game10 from '../Inicio/img/diablo.jpg'
-import game11 from '../Inicio/img/godofwar.jpg'
-import game12 from '../Inicio/img/naruto.jpg'
-import game13 from '../Inicio/img/palword.jpg'
-import game14 from '../Inicio/img/planetzoo.jpg'
-import game15 from '../Inicio/img/wukong.jpg'
-import game16 from '../Inicio/img/DetroitBecomeHuman.png'
-import game17 from '../Inicio/img/onePiece.png'
-import game19 from '../Inicio/img/thesims2.jpg'
-import game20 from '../Inicio/img/MarvelsSpiderMan.jpg'
+import game8 from '../Inicio/img/assassin.jpg';
+import game9 from '../Inicio/img/dayz.jpg';
+import game10 from '../Inicio/img/diablo.jpg';
+import game11 from '../Inicio/img/godofwar.jpg';
+import game12 from '../Inicio/img/naruto.jpg';
+import game13 from '../Inicio/img/palword.jpg';
+import game14 from '../Inicio/img/planetzoo.jpg';
+import game15 from '../Inicio/img/wukong.jpg';
+import game16 from '../Inicio/img/DetroitBecomeHuman.png';
+import game17 from '../Inicio/img/onePiece.png';
+import game19 from '../Inicio/img/thesims2.jpg';
+import game20 from '../Inicio/img/MarvelsSpiderMan.jpg';
 
 import adventurePackageImg from '../Inicio/img/witcher.cyber.PNG';
 import sportsPackageImg from '../Inicio/img/nba.f1.PNG';
@@ -29,6 +29,8 @@ import headsetImg from '../Inicio/img/fonegamer.jpg';
 import pcImg from '../Inicio/img/pcgamer.jpg';
 import keyboardImg from '../Inicio/img/teclado.jpg';
 import mouseImg from '../Inicio/img/mouse.jpg';
+import placaImg from '../Inicio/img/placadevideo.jpg'
+import cadeiraImg from '../Inicio/img/cadeira.jpg'
 
 // Carrossel
 import Slider from 'react-slick';
@@ -39,32 +41,32 @@ const Inicio = () => {
   const [cart, setCart] = useState([]); // Estado para o carrinho
   const [isModalOpen, setIsModalOpen] = useState(false); // Controle do estado do modal
 
-  //abrir o modal
+  // Abrir o modal
   const openCartModal = () => {
     setIsModalOpen(true);
   };
 
-  //fechar o modal
+  // Fechar o modal
   const closeCartModal = () => {
     setIsModalOpen(false);
   };
 
-  //adicionar ao carrinho
+  // Adicionar ao carrinho
   const addToCart = (item) => {
     setCart([...cart, item]);
   };
 
-  //remover um item do carrinho
+  // Remover um item do carrinho
   const removeFromCart = (item) => {
     setCart(cart.filter((cartItem) => cartItem.nome !== item.nome));
   };
 
-  //exibir o número de itens no carrinho
+  // Exibir o número de itens no carrinho
   const handleCartClick = () => {
     openCartModal();
   };
 
-  //carrossel
+  // Carrossel
   const settings = {
     dots: true,
     infinite: true,
@@ -100,6 +102,30 @@ const Inicio = () => {
       </div>
 
       {/* Modal do Carrinho */}
+      <Modal isOpen={isModalOpen} onRequestClose={closeCartModal} contentLabel="Carrinho">
+        <div className="cart-modal">
+          <h2>Itens no Carrinho</h2>
+          <ul>
+            {cart.length > 0 ? (
+              cart.map((item, index) => (
+                <li key={index} className="cart-item">
+                  <img src={item.img} alt={item.nome} className="cart-item-img" />
+                  <h3>{item.nome} - <span className="price">{item.preco}</span></h3>
+                  <button onClick={() => removeFromCart(item)}>Remover</button>
+                </li>
+              ))
+            ) : (
+              <p>Seu carrinho está Vazio 😔... (igual seu coração)</p>
+            )}
+          </ul>
+          <button onClick={closeCartModal}>Fechar</button>
+          {cart.length > 0 && (
+            <div className="checkout-container">
+              <button onClick={() => alert('Ainda em Manutenção favor Esperar...')}>Finalizar Compra</button>
+            </div>
+          )}
+        </div>
+      </Modal>
 
       {/* Jogos Populares - Carrossel */}
       <section className="jogos-section" id="jogos-populares">
@@ -223,6 +249,18 @@ const Inicio = () => {
               descricao: 'Mouse gamer com 16000 DPI e design ergonômico.',
               img: mouseImg 
             },
+            { 
+              nome: 'Placa de Video', 
+              preco: 'R$ 599,00', 
+              descricao: 'Placa De Video Rage-x Amd Radeon Rx580 Gddr5 8gb/256 Bits.',
+              img: placaImg 
+            },
+            { 
+              nome: 'Cadeira Gamer', 
+              preco: 'R$ 729,90', 
+              descricao: 'GAMING Hailstorm CG450, Preta e Branca, Com Almofadas, Reclinável, Descanso de Braço 2D - KGCG450PTBR',
+              img: cadeiraImg 
+            },
           ].map((pacote, index) => (
             <li key={index} className="pacote-card">
               <img src={pacote.img} alt={pacote.nome} className="pacote-img" />
@@ -233,30 +271,6 @@ const Inicio = () => {
           ))}
         </ul>
       </section>
-              <Modal isOpen={isModalOpen} onRequestClose={closeCartModal} contentLabel="Carrinho">
-                <div className="cart-modal">
-                  <h2>Itens no Carrinho</h2>
-                  <ul>
-                    {cart.length > 0 ? (
-                      cart.map((item, index) => (
-                        <li key={index} className="cart-item">
-                          <img src={item.img} alt={item.nome} className="cart-item-img" />
-                          <h3>{item.nome} - <span className="price">{item.preco}</span></h3>
-                          <button onClick={() => removeFromCart(item)}>Remover</button>
-                        </li>
-                      ))
-                    ) : (
-                      <p>Seu carrinho está Vazio 😔... (igual seu coração)</p>
-                    )}
-                  </ul>
-                  <button onClick={closeCartModal}>Fechar</button>
-                  {cart.length > 0 && (
-                    <div className="checkout-container">
-                      <button onClick={() => alert('Ainda em Manutenção favor Esperar...')}>Finalizar Compra</button>
-                    </div>
-                  )}
-                </div>
-              </Modal>
     </div>
   );
 };
