@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
-
 // Importação de imagens
 import game1 from '../Inicio/img/tle last of us.jpg';
 import game2 from '../Inicio/img/gtaV.jpg';
@@ -21,6 +20,12 @@ import game16 from '../Inicio/img/DetroitBecomeHuman.png';
 import game17 from '../Inicio/img/onePiece.png';
 import game19 from '../Inicio/img/thesims2.jpg';
 import game20 from '../Inicio/img/MarvelsSpiderMan.jpg';
+import game21 from '../Inicio/img/midside.jpg';
+import game22 from '../Inicio/img/splitfiction.jpg';
+import game23 from '../Inicio/img/subnautica.jpg';
+import game24 from '../Inicio/img/tombraider.jpg';
+import game25 from '../Inicio/img/repo.jfif';
+import game26 from '../Inicio/img/terraria.jfif';
 
 import adventurePackageImg from '../Inicio/img/witcher.cyber.PNG';
 import sportsPackageImg from '../Inicio/img/nba.f1.PNG';
@@ -29,9 +34,8 @@ import headsetImg from '../Inicio/img/fonegamer.jpg';
 import pcImg from '../Inicio/img/pcgamer.jpg';
 import keyboardImg from '../Inicio/img/teclado.jpg';
 import mouseImg from '../Inicio/img/mouse.jpg';
-import placaImg from '../Inicio/img/placadevideo.jpg'
-import cadeiraImg from '../Inicio/img/cadeira.jpg'
-
+import placaImg from '../Inicio/img/placadevideo.jpg';
+import cadeiraImg from '../Inicio/img/cadeira.jpg';
 // Carrossel
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css"; 
@@ -59,6 +63,11 @@ const Inicio = () => {
   // Remover um item do carrinho
   const removeFromCart = (item) => {
     setCart(cart.filter((cartItem) => cartItem.nome !== item.nome));
+  };
+
+  // Calcular o preço total do carrinho
+  const calculateTotal = () => {
+    return cart.reduce((total, item) => total + parseFloat(item.preco.replace('R$', '').replace(',', '.')), 0).toFixed(2);
   };
 
   // Exibir o número de itens no carrinho
@@ -119,8 +128,11 @@ const Inicio = () => {
             )}
           </ul>
           <button onClick={closeCartModal}>Fechar</button>
+
+          {/* Exibindo o total */}
           {cart.length > 0 && (
             <div className="checkout-container">
+              <h3>Total: R$ {calculateTotal()}</h3>
               <button onClick={() => alert('Ainda em Manutenção favor Esperar...')}>Finalizar Compra</button>
             </div>
           )}
@@ -171,6 +183,12 @@ const Inicio = () => {
             { nome: 'One Piece: Pirate Warriors 4', preco: 'R$ 179,00', img: game17 },
             { nome: 'The Sims 2', preco: 'R$ 99,00', img: game19 },
             { nome: 'Marvel’s Spider-Man', preco: 'R$ 249,00', img: game20 },
+            { nome: 'Midside', preco: 'R$ 129,00', img: game21 },
+            { nome: 'Split Fiction', preco: 'R$ 149,00', img: game22 },
+            { nome: 'Subnautica', preco: 'R$ 99,00', img: game23 },
+            { nome: 'Tomb Raider', preco: 'R$ 179,00', img: game24 },
+            { nome: 'Repo', preco: 'R$ 99,00', img: game25 },
+            { nome: 'Jogo 26', preco: 'R$ 129,00', img: game26 },
           ].map((jogo, index) => (
             <div key={index} className="jogo-card-small">
               <div className="image-container-small">
@@ -252,21 +270,21 @@ const Inicio = () => {
             { 
               nome: 'Placa de Video', 
               preco: 'R$ 599,00', 
-              descricao: 'Placa De Video Rage-x Amd Radeon Rx580 Gddr5 8gb/256 Bits.',
+              descricao: 'Placa de vídeo para jogos de alta performance.',
               img: placaImg 
             },
             { 
               nome: 'Cadeira Gamer', 
-              preco: 'R$ 729,90', 
-              descricao: 'GAMING Hailstorm CG450, Preta e Branca, Com Almofadas, Reclinável, Descanso de Braço 2D - KGCG450PTBR',
+              preco: 'R$ 999,00', 
+              descricao: 'Cadeira gamer com ajuste de altura e apoio lombar.',
               img: cadeiraImg 
             },
-          ].map((pacote, index) => (
-            <li key={index} className="pacote-card">
-              <img src={pacote.img} alt={pacote.nome} className="pacote-img" />
-              <h3>{pacote.nome} - <span className="price">{pacote.preco}</span></h3>
-              <p>{pacote.descricao}</p>
-              <button onClick={() => addToCart(pacote)}>Adicionar ao Carrinho</button>
+          ].map((produto, index) => (
+            <li key={index} className="produto-card">
+              <img src={produto.img} alt={produto.nome} className="produto-img" />
+              <h3>{produto.nome} - <span className="price">{produto.preco}</span></h3>
+              <p>{produto.descricao}</p>
+              <button onClick={() => addToCart(produto)}>Adicionar ao Carrinho</button>
             </li>
           ))}
         </ul>
