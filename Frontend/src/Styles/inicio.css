@@ -294,9 +294,9 @@ li .price {
 
 .cart-icon {
   position: fixed;
-  top: 10px;
-  right: 10px;
-  font-size: 18px;
+  bottom: 20px;
+  right: 20px;
+  font-size: 24px;
   cursor: pointer;
   background-color: #333;
   color: white;
@@ -310,23 +310,19 @@ li .price {
   transform: scale(1.1);
 }
 
-
-
-.cart-item {
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px;
+.cart-icon a {
+  color: #f1c40f;
+  text-decoration: none;
 }
 
-.cart-item-img {
-  width: 50px;
-  height: 50px;
-  margin-right: 10px;
+.cart-icon a:hover {
+  color: #818313;
 }
-
-.checkout-container {
-  margin-top: 20px;
-  text-align: center;
+.cart-item img {
+  width: 100px;
+  height: auto;
+  object-fit: cover;
+  max-width: 100%;
 }
 
 button {
@@ -440,12 +436,58 @@ button:hover {
   border-radius: 4px;
   cursor: pointer;
 }
+.pacotes-especiais-section ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Centraliza os itens horizontalmente */
+  gap: 20px; /* Espaço entre os itens */
+  padding: 0;
+  list-style: none;
+}
+
+.produto-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centraliza os itens no eixo vertical */
+  width: 250px; /* Largura fixa para os cards */
+  text-align: center; /* Alinha o texto ao centro */
+  padding: 10px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.produto-img {
+  width: 100%; /* Imagem ocupa toda a largura do card */
+  max-width: 200px; /* Limita o tamanho máximo da imagem */
+  height: auto;
+  object-fit: contain; /* Mantém a proporção da imagem */
+}
+
+h3, p {
+  margin: 10px 0;
+}
+
+button {
+  background-color: #f1c40f;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%; /* Faz o botão ocupar toda a largura do card */
+  margin-top: auto; /* Garante que o botão fique no final do card */
+}
+
+button:hover {
+  background-color: #818313;
+}
+
 
 .description-container-small button:hover {
   background-color: #977a06;
 }
 
-/* Ajustes adicionais para garantir que o layout seja responsivo e sem espaços vazios */
 @media (max-width: 768px) {
   .jogos-list {
     grid-template-columns: 1fr 1fr;

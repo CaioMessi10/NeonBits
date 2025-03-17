@@ -36,6 +36,12 @@ import keyboardImg from '../Inicio/img/teclado.jpg';
 import mouseImg from '../Inicio/img/mouse.jpg';
 import placaImg from '../Inicio/img/placadevideo.jpg';
 import cadeiraImg from '../Inicio/img/cadeira.jpg';
+import iphone from '../Inicio/img/iphone 16.jfif'
+import gtx from '../Inicio/img/gtx 1080ti.jfif'
+import notebook from '../Inicio/img/notebook.jfif' 
+import placaMae from '../Inicio/img/placamae.jpeg'
+import memoriaRam from '../Inicio/img/memoriaram.jfif'
+import gabinete from '../Inicio/img/gabinete.jfif'
 // Carrossel
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css"; 
@@ -111,7 +117,25 @@ const Inicio = () => {
       </div>
 
       {/* Modal do Carrinho */}
-      <Modal isOpen={isModalOpen} onRequestClose={closeCartModal} contentLabel="Carrinho">
+      <Modal
+        isOpen={isModalOpen}
+        onRequestClose={closeCartModal}
+        contentLabel="Carrinho"
+        style={{
+          content: {
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',  // Centraliza o modal tanto na vertical quanto na horizontal
+            width: '80%',  // Ajuste a largura conforme necessário
+            maxWidth: '600px',  // Largura máxima para o modal
+            padding: '20px',
+            borderRadius: '8px',
+            backgroundColor: '#fff',
+            boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+          },
+        }}
+      >
         <div className="cart-modal">
           <h2>Itens no Carrinho</h2>
           <ul>
@@ -238,57 +262,94 @@ const Inicio = () => {
         </ul>
       </section>
 
-      {/* Pacotes Especiais - Acessórios Gamer */}
       <section className="pacotes-especiais-section" id="pacotes">
-        <h2>Pacotes Especiais - Acessórios Gamer</h2>
-        <ul>
-          {[ 
-            { 
-              nome: 'Fone Gamer', 
-              preco: 'R$ 159,00', 
-              descricao: 'Fone de ouvido gamer com som surround 7.1.',
-              img: headsetImg 
-            },
-            { 
-              nome: 'PC Gamer Completo', 
-              preco: 'R$ 3569,00', 
-              descricao: 'PC gamer com placa de vídeo RTX 3060 e 16GB de RAM.',
-              img: pcImg 
-            },
-            { 
-              nome: 'Teclado Mecânico', 
-              preco: 'R$ 248,90', 
-              descricao: 'Teclado mecânico RGB com switches de alta precisão.',
-              img: keyboardImg 
-            },
-            { 
-              nome: 'Mouse Gamer', 
-              preco: 'R$ 199,00', 
-              descricao: 'Mouse gamer com 16000 DPI e design ergonômico.',
-              img: mouseImg 
-            },
-            { 
-              nome: 'Placa de Video', 
-              preco: 'R$ 599,00', 
-              descricao: 'Placa de vídeo para jogos de alta performance.',
-              img: placaImg 
-            },
-            { 
-              nome: 'Cadeira Gamer', 
-              preco: 'R$ 999,00', 
-              descricao: 'Cadeira gamer com ajuste de altura e apoio lombar.',
-              img: cadeiraImg 
-            },
-          ].map((produto, index) => (
-            <li key={index} className="produto-card">
-              <img src={produto.img} alt={produto.nome} className="produto-img" />
-              <h3>{produto.nome} - <span className="price">{produto.preco}</span></h3>
-              <p>{produto.descricao}</p>
-              <button onClick={() => addToCart(produto)}>Adicionar ao Carrinho</button>
-            </li>
-          ))}
-        </ul>
-      </section>
+  <h2>Pacotes Especiais - Acessórios Gamer</h2>
+  <ul>
+    {[ 
+      { 
+        nome: 'Fone Gamer', 
+        preco: 'R$ 159,00', 
+        descricao: 'Fone de ouvido gamer com som surround 7.1.',
+        img: headsetImg 
+      },
+      { 
+        nome: 'PC Gamer Completo', 
+        preco: 'R$ 3569,00', 
+        descricao: 'PC gamer com placa de vídeo RTX 3060 e 16GB de RAM.',
+        img: pcImg 
+      },
+      { 
+        nome: 'Teclado Mecânico', 
+        preco: 'R$ 248,90', 
+        descricao: 'Teclado mecânico RGB com switches de alta precisão.',
+        img: keyboardImg 
+      },
+      { 
+        nome: 'Mouse Gamer', 
+        preco: 'R$ 199,00', 
+        descricao: 'Mouse gamer com 16000 DPI e design ergonômico.',
+        img: mouseImg 
+      },
+      { 
+        nome: 'Placa de Video', 
+        preco: 'R$ 599,00', 
+        descricao: 'Placa de vídeo para jogos de alta performance.',
+        img: placaImg 
+      },
+      { 
+        nome: 'Cadeira Gamer', 
+        preco: 'R$ 999,00', 
+        descricao: 'Cadeira gamer com ajuste de altura e apoio lombar.',
+        img: cadeiraImg 
+      },
+      { 
+        nome: 'Gabinete Gamer',  // Gabinete adicionado aqui
+        preco: 'R$ 349,00', 
+        descricao: 'Gabinete gamer com excelente fluxo de ar e design moderno.',
+        img: gabinete 
+      },
+      { 
+        nome: 'iPhone 16', 
+        preco: 'R$ 6999,00', 
+        descricao: 'Smartphone com desempenho avançado e câmera de alta qualidade.',
+        img: iphone 
+      },
+      { 
+        nome: 'GTX 1080 Ti', 
+        preco: 'R$ 1130,10', 
+        descricao: 'Placa de vídeo GTX 1080 Ti para jogos em alta definição.',
+        img: gtx 
+      },
+      { 
+        nome: 'Notebook Gamer', 
+        preco: 'R$ 4898,00', 
+        descricao: 'Notebook gamer com processador i7 e placa de vídeo RTX 3070.',
+        img: notebook 
+      },
+      { 
+        nome: 'Memória RAM', 
+        preco: 'R$ 349,00', 
+        descricao: 'Memória RAM DDR4 de 16GB para alto desempenho em jogos e multitarefas.',
+        img: memoriaRam 
+      },
+      { 
+        nome: 'Placa Mãe', 
+        preco: 'R$ 599,00', 
+        descricao: 'Placa mãe com chipset X570 para suportar as mais novas tecnologias.',
+        img: placaMae 
+      }
+    ].map((produto, index) => (
+      <li key={index} className="produto-card">
+        <img src={produto.img} alt={produto.nome} className="produto-img" />
+        <h3>{produto.nome} - <span className="price">{produto.preco}</span></h3>
+        <p>{produto.descricao}</p>
+        <button onClick={() => addToCart(produto)}>Adicionar ao Carrinho</button>
+      </li>
+    ))}
+  </ul>
+</section>
+
+
     </div>
   );
 };
