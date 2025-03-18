@@ -133,7 +133,7 @@ body {
 }
 
 .close-settings {
-  background-color: #f44336;
+  background-color: #f39c12;
   color: white;
   border: none;
   padding: 5px 10px;
@@ -141,7 +141,7 @@ body {
 }
 
 .close-settings:hover {
-  background-color: #d32f2f;
+  background-color: #f1c40f ;
 }
 
 /* Overlay do login */

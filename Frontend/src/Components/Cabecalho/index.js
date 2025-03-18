@@ -16,6 +16,18 @@ export default function Cabecalho() {
   // Estado para controlar a transparência do cabeçalho
   const [isScrolled, setIsScrolled] = useState(false);
 
+  // Estado para o tema claro/escuro
+  const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
+
+  // Estado para a cor do fundo
+  const [bgColor, setBgColor] = useState(localStorage.getItem('bgColor') || '#ffffff');
+
+  // Estado para o idioma
+  const [language, setLanguage] = useState(localStorage.getItem('language') || 'pt');
+
+  // Estado para as notificações
+  const [notifications, setNotifications] = useState(localStorage.getItem('notifications') === 'true' || true);
+
   // Função para alternar a visibilidade do login
   const toggleLogin = () => {
     setShowLogin(!showLogin);
@@ -24,6 +36,33 @@ export default function Cabecalho() {
   // Função para alternar a visibilidade da seção de configurações
   const toggleSettings = () => {
     setShowSettings(!showSettings);
+  };
+
+  // Função para alternar o tema
+  const toggleTheme = () => {
+    const newTheme = theme === 'light' ? 'dark' : 'light';
+    setTheme(newTheme);
+    localStorage.setItem('theme', newTheme);
+  };
+
+  // Função para mudar a cor de fundo
+  const changeBgColor = (color) => {
+    setBgColor(color);
+    localStorage.setItem('bgColor', color);
+  };
+
+  // Função para alternar o idioma
+  const toggleLanguage = () => {
+    const newLanguage = language === 'pt' ? 'en' : 'pt';
+    setLanguage(newLanguage);
+    localStorage.setItem('language', newLanguage);
+  };
+
+  // Função para alternar as notificações
+  const toggleNotifications = () => {
+    const newNotifications = !notifications;
+    setNotifications(newNotifications);
+    localStorage.setItem('notifications', newNotifications);
   };
 
   // Efeito para detectar a rolagem e mudar a opacidade do cabeçalho
@@ -44,13 +83,19 @@ export default function Cabecalho() {
     };
   }, []);
 
+  // Aplica a classe do tema ao corpo do documento
+  useEffect(() => {
+    document.body.className = theme;
+    document.body.style.backgroundColor = bgColor;
+  }, [theme, bgColor]);
+
   return (
     <div>
       <header>
         <div className={`cabecalho ${isScrolled ? 'scrolled' : ''}`}>
           {/* Logo */}
           <div className="logo-head">
-            <h1 className="titulo-vintage">Vintage Playland</h1> {/* Classe para o efeito vintage */}
+            <h1 className="titulo-vintage">Vintage Playland</h1>
           </div>
 
           {/* Ícones e Login alinhados à direita */}
@@ -78,8 +123,18 @@ export default function Cabecalho() {
             <div className="settings-menu">
               <h2>Configurações</h2>
               <ul>
-                <li>Alterar Tema</li>
-                <li>Notificações</li>
+                <li onClick={toggleTheme}>
+                  {theme === 'light' ? 'Ativar Modo Escuro' : 'Ativar Modo Claro'}
+                </li>
+                <li onClick={() => changeBgColor('#ffecb3')}>Fundo Amarelo Claro</li>
+                <li onClick={() => changeBgColor('#e0f7fa')}>Fundo Azul Claro</li>
+                <li onClick={() => changeBgColor('#ffffff')}>Fundo Branco</li>
+                <li onClick={toggleLanguage}>
+                  {language === 'pt' ? 'Mudar para Inglês' : 'Mudar para Português'}
+                </li>
+                <li onClick={toggleNotifications}>
+                  {notifications ? 'Desativar Notificações' : 'Ativar Notificações'}
+                </li>
                 <li>Preferências</li>
               </ul>
               <button onClick={toggleSettings} className="close-settings">Fechar</button>
