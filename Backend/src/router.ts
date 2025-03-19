@@ -34,6 +34,8 @@ router.post('/CadastroProdutos',estaAutenticado, upload.single('file'), new Prod
 
 //Pedidos
 router.post('/CadastroPedido', new PedidoControllers().cadastro_pedido)
+router.post('/RealizarPedido', new PedidoControllers().criarPedido)
+router.post('/AdicionarItensPedido', new PedidoControllers().adcionarItensPedido)
 
 //Hierarquia
 router.post('/CadastroHierarquia', new HierarquiaCntrollers().cadastro_hierarquia)
