@@ -62,6 +62,7 @@ model CadastroProdutos {
   updated   DateTime @updatedAt
 
   pedidos CadPedidos[]
+  itens ItemsCarrinho[]
   @@map("cadastro_produtos")
 }
 

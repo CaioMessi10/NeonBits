@@ -18,11 +18,11 @@ class PedidoControllers {
         }
     }
     async criarPedido(req: Request, res: Response){
-        const { id_cliente, id_produto, valor } = req.body
+        const { id_cliente, id_produtos, valor } = req.body
         const enviaDadosServices = new PedidoServices
         const resposta = await enviaDadosServices.criarPedidos({
             id_cliente,
-            id_produto,
+            id_produtos,
             valor
         })
         return res.json(resposta)

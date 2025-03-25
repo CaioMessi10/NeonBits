@@ -30,7 +30,7 @@ class PedidoServices {
         
         return { dados: 'Pedido Cadastrado', pedido: resposta };
     }
-     async criarPedidos({ id_cliente, id_produto, valor }: CriarPedidos){
+     async criarPedidos({ id_cliente, id_produtos, valor }: CriarPedidos){
         const resposta = await prismaCliente.carrinho.create({
             data:{
                 id_cliente: id_cliente,
@@ -39,7 +39,7 @@ class PedidoServices {
         await prismaCliente.itemsCarrinho.create({
             data: {
                 id_carrinho: resposta.id,
-                id_produtos: id_produto,
+                id_produto: id_produtos,
                 valor: valor
             }
         })
