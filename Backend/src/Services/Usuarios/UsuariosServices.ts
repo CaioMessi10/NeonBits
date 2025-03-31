@@ -1,6 +1,5 @@
 import prismaCliente from "../../prisma/index";
 import { hash } from 'bcryptjs'
-import { compare } from 'bcryptjs'
 
 interface CadUsuarios {
     nome: string

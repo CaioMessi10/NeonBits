@@ -1,5 +1,8 @@
-import React, { useState } from 'react';
+import React, {  useState, useContext, useEffect  } from 'react';
 import Modal from 'react-modal';
+import { toast } from 'react-toastify'
+import apiLocal from '../Api/apiLocal'
+import { AutenticadoContexto } from '../Contexts/authContexts'
 // Importação de imagens
 import game1 from '../Inicio/img/tle last of us.jpg';
 import game2 from '../Inicio/img/gtaV.jpg';
@@ -117,52 +120,7 @@ const Inicio = () => {
       </div>
 
       {/* Modal do Carrinho */}
-      <Modal
-        isOpen={isModalOpen}
-        onRequestClose={closeCartModal}
-        contentLabel="Carrinho"
-        style={{
-          content: {
-            position: 'absolute',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',  // Centraliza o modal tanto na vertical quanto na horizontal
-            width: '80%',  // Ajuste a largura conforme necessário
-            maxWidth: '600px',  // Largura máxima para o modal
-            padding: '20px',
-            borderRadius: '8px',
-            backgroundColor: '#fff',
-            boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-          },
-        }}
-      >
-        <div className="cart-modal">
-          <h2>Itens no Carrinho</h2>
-          <ul>
-            {cart.length > 0 ? (
-              cart.map((item, index) => (
-                <li key={index} className="cart-item">
-                  <img src={item.img} alt={item.nome} className="cart-item-img" />
-                  <h3>{item.nome} - <span className="price">{item.preco}</span></h3>
-                  <button onClick={() => removeFromCart(item)}>Remover</button>
-                </li>
-              ))
-            ) : (
-              <p>Seu carrinho está Vazio 😔... (igual seu coração)</p>
-            )}
-          </ul>
-          <button onClick={closeCartModal}>Fechar</button>
-
-          {/* Exibindo o total */}
-          {cart.length > 0 && (
-            <div className="checkout-container">
-              <h3>Total: R$ {calculateTotal()}</h3>
-              <button onClick={() => alert('Ainda em Manutenção favor Esperar...')}>Finalizar Compra</button>
-            </div>
-          )}
-        </div>
-      </Modal>
-
+     
       {/* Jogos Populares - Carrossel */}
       <section className="jogos-section" id="jogos-populares">
         <h2>Jogos Populares</h2>

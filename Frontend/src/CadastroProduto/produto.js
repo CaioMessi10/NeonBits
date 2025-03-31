@@ -1,4 +1,4 @@
-import { useState, useContext, useEffect } from 'react'
+import { useState, useContext} from 'react'
 import { AutenticadoContexto } from '../Contexts/authContexts'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
@@ -8,6 +8,7 @@ import '../Styles/cadProduto.css'
 export default function Produtos() {
 
     const { verificarToken, token } = useContext(AutenticadoContexto)
+    verificarToken()
 
     const navegar = useNavigate()
 
@@ -15,11 +16,6 @@ export default function Produtos() {
     const [precoProd, setPreco] = useState('')
     const [descricao, setDescricao] = useState('')
     const [imagem, setImagem] = useState(null)
-    console.log(nomeProd, precoProd)
-
-    useEffect(() =>{
-        verificarToken();
-    },[verificarToken])
 
     function pegarImagem(e) {
         if (!e.target.files) {
