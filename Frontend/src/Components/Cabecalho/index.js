@@ -95,7 +95,7 @@ export default function Cabecalho() {
         <div className={`cabecalho ${isScrolled ? 'scrolled' : ''}`}>
           {/* Logo */}
           <div className="logo-head">
-            <h1 className="titulo-vintage">Vintage Playland</h1>
+            <h1 className="titulo-vintage">NeonBits</h1>
           </div>
 
           {/* Ícones e Login alinhados à direita */}
