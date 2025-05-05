@@ -23,7 +23,26 @@ const Drawer = createDrawerNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      <Drawer.Navigator initialRouteName="Login">
+      <Drawer.Navigator
+        initialRouteName="Login"
+        screenOptions={{
+          drawerStyle: {
+            backgroundColor: '#1a1a1a',
+          },
+          drawerActiveBackgroundColor: '#1a1a1a',
+          drawerInactiveBackgroundColor: '#1a1a1a',
+          drawerActiveTintColor: '#ffcc00',
+          drawerInactiveTintColor: '#ffcc00',
+          headerStyle: {
+            backgroundColor: '#1a1a1a',
+          },
+          headerTintColor: '#ffcc00',
+          drawerLabelStyle: {
+            fontSize: 16,
+            fontWeight: 'bold',
+          },
+        }}
+      >
         <Drawer.Screen name="Area do Usuario" component={Login} />
         <Drawer.Screen name="Home" component={Home} />
         <Drawer.Screen name="Meus Anuncios" component={Tela1} />
@@ -31,6 +50,8 @@ export default function App() {
     </NavigationContainer>
   );
 }
+
+
 
 function Navbar() {
   return (
@@ -94,7 +115,7 @@ function Login({ navigation }) {
         <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
           <Text style={styles.title}>Área do Usuário</Text>
 
-          <Image source={require('./imagens/abertura.jpg')} style={styles.image} />
+          <Image source={require('./imagens/dexter.jpg')} style={styles.image} />
 
           <View style={styles.contentBox}>
             <TextInput
@@ -224,12 +245,12 @@ function Tela1() {
 
         <View style={styles.contentBox}>
           <Image
-            source={require('./imagens/Lanche1.jpeg')}
+            source={require('./imagens/jogos1.jpg')}
             style={{ width: '100%', height: 180, borderRadius: 10 }}
           />
           <Text style={styles.resultText}>
-            Pedaços de paleta bovina, marinada por 24 horas em cerveja, vinho e ervas,
-            com bacon, champignon e cenoura, guarnecidos de cebola palha frita e farofa de ovos.
+          Acesse e gerencie facilmente suas informações pessoais,
+          preferências e atividades em um só lugar. Na Área do Usuário
           </Text>
         </View>
 
