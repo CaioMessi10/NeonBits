@@ -3,7 +3,7 @@ import {
   SafeAreaView, StatusBar, Text, Image, View,
   TextInput, TouchableOpacity, ScrollView, KeyboardAvoidingView, Platform
 } from 'react-native';
-import axios from 'axios'; // não esquece de importar o axios!
+import axios from 'axios';
 import Navbar from '../components/Navbar';
 import Rodape from '../components/Rodape';
 import styles from '../styles/styles';
@@ -17,13 +17,28 @@ export default function AreaUsuario() {
   const [cep, setCep] = useState('');
   const [dadosCep, setDadosCep] = useState(null);
 
+  const [rua, setRua] = useState('');
+  const [bairro, setBairro] = useState('');
+  const [cidade, setCidade] = useState('');
+  const [uf, setUf] = useState('');
+
   async function buscarCEP() {
     try {
       const cepLimpo = cep.replace(/\D/g, '');
       const resposta = await axios.get(`https://viacep.com.br/ws/${cepLimpo}/json/`);
-      setDadosCep(resposta.data);
+      const data = resposta.data;
+
+      setDadosCep(data);
+      setRua(data.logradouro || '');
+      setBairro(data.bairro || '');
+      setCidade(data.localidade || '');
+      setUf(data.uf || '');
     } catch (error) {
       setDadosCep({ logradouro: 'CEP inválido ou erro na busca' });
+      setRua('');
+      setBairro('');
+      setCidade('');
+      setUf('');
     }
   }
 
@@ -106,14 +121,34 @@ export default function AreaUsuario() {
               <Text style={styles.buttonText}>Buscar CEP</Text>
             </TouchableOpacity>
 
-            {dadosCep && (
-              <View style={{ marginTop: 10 }}>
-                <Text style={styles.resultText}>Rua: {dadosCep?.logradouro}</Text>
-                <Text style={styles.resultText}>Bairro: {dadosCep?.bairro}</Text>
-                <Text style={styles.resultText}>Cidade: {dadosCep?.localidade}</Text>
-                <Text style={styles.resultText}>UF: {dadosCep?.uf}</Text>
-              </View>
-            )}
+            <TextInput
+              style={styles.input}
+              placeholder="Rua"
+              placeholderTextColor="#666"
+              value={rua}
+              onChangeText={setRua}
+            />
+            <TextInput
+              style={styles.input}
+              placeholder="Bairro"
+              placeholderTextColor="#666"
+              value={bairro}
+              onChangeText={setBairro}
+            />
+            <TextInput
+              style={styles.input}
+              placeholder="Cidade"
+              placeholderTextColor="#666"
+              value={cidade}
+              onChangeText={setCidade}
+            />
+            <TextInput
+              style={styles.input}
+              placeholder="UF"
+              placeholderTextColor="#666"
+              value={uf}
+              onChangeText={setUf}
+            />
           </View>
         </ScrollView>
       </KeyboardAvoidingView>
