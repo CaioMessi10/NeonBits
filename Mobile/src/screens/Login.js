@@ -4,36 +4,10 @@ import {
   TextInput, TouchableOpacity, ScrollView, KeyboardAvoidingView, Platform, Keyboard
 } from 'react-native';
 import axios from 'axios';
-import {
-  initializeApp,
-  getApps,
-  getApp
-} from 'firebase/app';
-import {
-  getDatabase,
-  ref,
-  push,
-  set
-} from 'firebase/database';
 
 import Navbar from '../components/Navbar';
 import Rodape from '../components/Rodape';
 import styles from '../styles/styles';
-
-// Configuração do Firebase
-const firebaseConfig = {
-  apiKey: "AIzaSyCF_tPaB8SB3eqe5whAf9cjtlnPk3MwWWg",
-  authDomain: "neon-bits.firebaseapp.com",
-  databaseURL: "https://neon-bits-default-rtdb.firebaseio.com",
-  projectId: "neon-bits",
-  storageBucket: "neon-bits.firebasestorage.app",
-  messagingSenderId: "251207008824",
-  appId: "1:251207008824:web:dc7e539b3f2f0c11485ccd",
-  measurementId: "G-LCFH0ZEW57"
-};
-
-const app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApp();
-const database = getDatabase(app);
 
 export default function AreaUsuario() {
   const [nome, setNome] = useState('');
@@ -76,9 +50,8 @@ export default function AreaUsuario() {
     }
 
     try {
-      const usuariosRef = ref(database, 'usuarios');
-      const novaRef = push(usuariosRef);
-      await set(novaRef, {
+      // Aqui você pode salvar em uma API ou outro backend no futuro
+      console.log('Usuário cadastrado:', {
         nome,
         cpf,
         telefone,
@@ -104,7 +77,7 @@ export default function AreaUsuario() {
       setUf('');
       Keyboard.dismiss();
     } catch (error) {
-      alert('Erro ao salvar no Firebase: ' + error.message);
+      alert('Erro ao salvar os dados: ' + error.message);
     }
   }
 
@@ -151,7 +124,7 @@ export default function AreaUsuario() {
             <TextInput style={styles.input} placeholder="UF" placeholderTextColor="#666" value={uf} onChangeText={setUf} />
 
             <TouchableOpacity style={styles.button} onPress={botaoCadastrar}>
-              <Text style={styles.buttonText}>Salvar no Firebase</Text>
+              <Text style={styles.buttonText}>Salvar</Text>
             </TouchableOpacity>
           </View>
         </ScrollView>
