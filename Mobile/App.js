@@ -4,6 +4,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import Login from './src/screens/Login';
 import Home from './src/screens/Home';
 import Tela1 from './src/screens/Tela1';
+import AreaUsuario from './src/screens/Cadastrar';
 
 const Drawer = createDrawerNavigator();
 
@@ -23,7 +24,8 @@ export default function App() {
           drawerLabelStyle: { fontSize: 16, fontWeight: 'bold' },
         }}
       >
-        <Drawer.Screen name="Area do Usuario" component={Login} />
+        <Drawer.Screen name="Login" component={Login} />
+        <Drawer.Screen name="Cadastrar" component={AreaUsuario} />
         <Drawer.Screen name="Home" component={Home} />
         <Drawer.Screen name="Meus Anuncios" component={Tela1} />
       </Drawer.Navigator>
