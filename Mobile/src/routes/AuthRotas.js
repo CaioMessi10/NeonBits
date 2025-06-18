@@ -1,7 +1,7 @@
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-import DashBoard from '../screens/Login'
+import DashBoard from '../screens/Cadastrar'
 const Stack = createNativeStackNavigator()
 
 export default function AutRotas(){

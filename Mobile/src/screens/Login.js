@@ -50,7 +50,6 @@ export default function AreaUsuario() {
     }
 
     try {
-      // Aqui você pode salvar em uma API ou outro backend no futuro
       console.log('Usuário cadastrado:', {
         nome,
         cpf,
