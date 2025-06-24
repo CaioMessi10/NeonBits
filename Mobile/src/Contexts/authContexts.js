@@ -1,19 +1,69 @@
-import React, { useState, createContext} from 'react'
+import {
+    createContext,
+    useState,
+} from "react";
+import {
+    ToastAndroid
+} from "react-native";
+import apiLocal from "../api/apiLocal";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-export const AutContexts = createContext()
+export const AutenticadoContexto = createContext();
 
-export function AutProvider ({ children }) {
-     
-    const [ token ,setToken] = useState(false)
-    const [ loading, setLoaging]= useState(false)
+export default function AuthProvider({ children }) {
+    const [tokenT, setTokenT] = useState(false);
+    const [token, setToken] = useState('');
 
-    const autenticado = false
+    const autenticado = !!tokenT;
+
+    async function verificarToken() {
+        const iToken = await AsyncStorage.getItem('@token');
+        // console.log(iToken);
+        if (!iToken) {
+            setTokenT(false);
+            return;
+        };
+        const tokenU = JSON.parse(iToken);
+        setToken(tokenU);
+        try {
+            const resposta = await apiLocal.get('/VerificarTokenUsuario', {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
+            if (resposta.data.id) {
+                setTokenT(true);
+                await AsyncStorage.setItem('@id', JSON.stringify(resposta.data.id));
+                await AsyncStorage.setItem('@nome', JSON.stringify(resposta.data.nome));
+            };
+        } catch (err) {
+            ToastAndroid.show(err.response.data.error);
+        };
+    };
+
+    async function loginEntrada(email, password) {
+        try {
+            const resposta = await apiLocal.post('/LoginUsuarios', {
+                email,
+                password
+            });
+            await AsyncStorage.setItem('@id', JSON.stringify(resposta.data.id));
+            await AsyncStorage.setItem('@token', JSON.stringify(resposta.data.token));
+            await AsyncStorage.setItem('@nome', JSON.stringify(resposta.data.nome));
+            setTokenT(true);
+        } catch (err) {
+            ToastAndroid.show(err.response.data.error);
+        };
+    };
+
+    const logout = async () => {
+        await AsyncStorage.clear();
+        setTokenT(false);
+    };
 
     return (
-        <AutContexts.Provider
-        value={(autenticado)}
-        >
-            { children }
-        </AutContexts.Provider>
-    )
-}
+        <AutenticadoContexto.Provider value={({ autenticado, loginEntrada, verificarToken, token, logout })}>
+            {children}
+        </AutenticadoContexto.Provider>
+    );
+};
