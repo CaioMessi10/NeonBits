@@ -4,7 +4,7 @@ import {
   TextInput, TouchableOpacity, KeyboardAvoidingView,
   Platform, ScrollView, Keyboard
 } from 'react-native';
-import  AutenticadoContexto  from '../Contexts/authContexts';
+import { AutenticadoContexto } from '../Contexts/authContexts';
 
 import Navbar from '../components/Navbar';
 import Rodape from '../components/Rodape';
@@ -13,7 +13,19 @@ import styles from '../styles/styles';
 export default function Login() {
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
- const  { loginEntrada } = useContext{AutenticadoContexto}
+  const { loginEntrada } = useContext(AutenticadoContexto)
+
+  async function dadosLogin(e) {
+    e.preventDefault();
+    try {
+      if (!email || !senha) {
+        console.log("Prencha todos os campos");
+      };
+      await loginEntrada(email, senha);
+    } catch (err) {
+      console.log(err);
+    };
+  };
 
 
   return (
@@ -47,7 +59,7 @@ export default function Login() {
               onChangeText={setSenha}
             />
 
-            <TouchableOpacity style={styles.button} onPress={botaoCadastrar}>
+            <TouchableOpacity style={styles.button} onPress={dadosLogin}>
               <Text style={styles.buttonText}>Cadastrar</Text>
             </TouchableOpacity>
           </View>
