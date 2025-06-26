@@ -5,6 +5,8 @@ import {
   Platform, ScrollView, Keyboard
 } from 'react-native';
 import { AutenticadoContexto } from '../Contexts/authContexts';
+import Home from './Home';
+import { useNavigation } from "@react-navigation/native";
 
 import Navbar from '../components/Navbar';
 import Rodape from '../components/Rodape';
@@ -13,7 +15,9 @@ import styles from '../styles/styles';
 export default function Login() {
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
-  const { loginEntrada } = useContext(AutenticadoContexto)
+  const navigation = useNavigation()
+  
+  const { loginEntrada, autenticado } = useContext(AutenticadoContexto)
 
   async function dadosLogin(e) {
     e.preventDefault();
@@ -22,6 +26,7 @@ export default function Login() {
         console.log("Prencha todos os campos");
       };
       await loginEntrada(email, senha);
+      navigation.navigate('Home');
     } catch (err) {
       console.log(err);
     };

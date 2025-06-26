@@ -41,11 +41,11 @@ export default function AuthProvider({ children }) {
         };
     };
 
-    async function loginEntrada(email, password) {
+    async function loginEntrada(email, senha) {
         try {
             const resposta = await apiLocal.post('/LoginUsuarios', {
                 email,
-                password
+                senha,
             });
             await AsyncStorage.setItem('@id', JSON.stringify(resposta.data.id));
             await AsyncStorage.setItem('@token', JSON.stringify(resposta.data.token));
