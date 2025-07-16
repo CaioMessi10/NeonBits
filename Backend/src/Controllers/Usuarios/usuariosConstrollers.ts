@@ -3,15 +3,14 @@ import { UsuariosServices } from "../../Services/Usuarios/UsuariosServices";
 
 class UsuariosControllers {
     async cadastro_usuarios(req: Request, res: Response) {
-        const { nome, cpf, email, senha, cep, idPedidos } = req.body;
+        const { nome, cpf, email, senha, cep } = req.body;
         const usuariosServices = new UsuariosServices();
         const resposta = await usuariosServices.cadastrar_usuarios({
             nome,
             cpf,
             email,
             senha,
-            cep,
-            idPedidos
+            cep
         });
         return res.json(resposta);
     }

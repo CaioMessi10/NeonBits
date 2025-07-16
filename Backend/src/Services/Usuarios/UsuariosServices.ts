@@ -7,7 +7,6 @@ interface CadUsuarios {
     email: string
     senha: string
     cep: string
-    idPedidos: string
 }
 interface AlterarUsuarios {
     id: string
@@ -16,7 +15,7 @@ interface AlterarUsuarios {
 }
 
 class UsuariosServices {
-    async cadastrar_usuarios({ nome, cpf, email, senha, cep, idPedidos }: CadUsuarios) {
+    async cadastrar_usuarios({ nome, cpf, email, senha, cep }: CadUsuarios) {
         const usuario = await prismaCliente.cadastroUsuarios.findFirst({
             where:{
                 email: email
@@ -38,8 +37,7 @@ class UsuariosServices {
                 cpf: cpf,
                 email: email,
                 senha: passCrypt,
-                cep: cep,
-                idPedidos: idPedidos
+                cep: cep
             }
         });
 

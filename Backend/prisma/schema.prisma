@@ -30,7 +30,6 @@ model CadastroUsuarios {
   updatedAt DateTime @updatedAt
 
   pedidos  CadPedidos []
-  idPedidos String?
 
   @@map("cadastro_usuarios")
 }
